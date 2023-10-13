@@ -11,7 +11,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="DragonBall_iOS_Avanzado" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="DragonBall_iOS_Avanzado" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -110,7 +110,7 @@
                         <outlet property="emailFieldError" destination="L3t-9T-iDS" id="OF1-i7-P5O"/>
                         <outlet property="loadingview" destination="HoQ-8N-crY" id="kow-xr-hyc"/>
                         <outlet property="passwordField" destination="kqF-LX-9ab" id="iHK-RP-3Ql"/>
-                        <outlet property="passworldFieldError" destination="g1I-qT-LYO" id="XIv-8E-MZ4"/>
+                        <outlet property="passwordFieldError" destination="g1I-qT-LYO" id="SRi-fh-o7W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

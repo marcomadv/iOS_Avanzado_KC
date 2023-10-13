@@ -17,6 +17,7 @@
 		A9FC4A282AD696D000155F52 /* DragonBall_iOS_AvanzadoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC4A272AD696D000155F52 /* DragonBall_iOS_AvanzadoTests.swift */; };
 		A9FC4A322AD696D000155F52 /* DragonBall_iOS_AvanzadoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC4A312AD696D000155F52 /* DragonBall_iOS_AvanzadoUITests.swift */; };
 		A9FC4A342AD696D000155F52 /* DragonBall_iOS_AvanzadoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC4A332AD696D000155F52 /* DragonBall_iOS_AvanzadoUITestsLaunchTests.swift */; };
+		A9FC4A482AD6AE8600155F52 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC4A472AD6AE8600155F52 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		A9FC4A2D2AD696D000155F52 /* DragonBall_iOS_AvanzadoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DragonBall_iOS_AvanzadoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FC4A312AD696D000155F52 /* DragonBall_iOS_AvanzadoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragonBall_iOS_AvanzadoUITests.swift; sourceTree = "<group>"; };
 		A9FC4A332AD696D000155F52 /* DragonBall_iOS_AvanzadoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragonBall_iOS_AvanzadoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A9FC4A472AD6AE8600155F52 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,8 +133,8 @@
 		A9FC4A402AD696D600155F52 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				A9FC4A132AD696CF00155F52 /* Main.storyboard */,
 				A9FC4A452AD697D600155F52 /* Launch */,
+				A9FC4A132AD696CF00155F52 /* Main.storyboard */,
 				A9FC4A462AD697E300155F52 /* Login */,
 			);
 			path = Presentation;
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				A9FC4A112AD696CF00155F52 /* LoginViewController.swift */,
+				A9FC4A472AD6AE8600155F52 /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				A9FC4A122AD696CF00155F52 /* LoginViewController.swift in Sources */,
 				A9FC4A0E2AD696CF00155F52 /* AppDelegate.swift in Sources */,
 				A9FC4A102AD696CF00155F52 /* SceneDelegate.swift in Sources */,
+				A9FC4A482AD6AE8600155F52 /* LoginViewModel.swift in Sources */,
 				A9FC4A182AD696CF00155F52 /* DragonBall_iOS_Avanzado.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
