@@ -18,6 +18,9 @@
 		A9FC4A322AD696D000155F52 /* DragonBall_iOS_AvanzadoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC4A312AD696D000155F52 /* DragonBall_iOS_AvanzadoUITests.swift */; };
 		A9FC4A342AD696D000155F52 /* DragonBall_iOS_AvanzadoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC4A332AD696D000155F52 /* DragonBall_iOS_AvanzadoUITestsLaunchTests.swift */; };
 		A9FC4A482AD6AE8600155F52 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC4A472AD6AE8600155F52 /* LoginViewModel.swift */; };
+		A9FC4A4B2AD9AFBC00155F52 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A9FC4A4A2AD9AFBC00155F52 /* KeychainSwift */; };
+		A9FC4A4D2AD9B33D00155F52 /* SecureDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC4A4C2AD9B33D00155F52 /* SecureDataProvider.swift */; };
+		A9FC4A4F2AD9B76100155F52 /* ApiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC4A4E2AD9B76100155F52 /* ApiProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,8 @@
 		A9FC4A312AD696D000155F52 /* DragonBall_iOS_AvanzadoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragonBall_iOS_AvanzadoUITests.swift; sourceTree = "<group>"; };
 		A9FC4A332AD696D000155F52 /* DragonBall_iOS_AvanzadoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragonBall_iOS_AvanzadoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A9FC4A472AD6AE8600155F52 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		A9FC4A4C2AD9B33D00155F52 /* SecureDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureDataProvider.swift; sourceTree = "<group>"; };
+		A9FC4A4E2AD9B76100155F52 /* ApiProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9FC4A4B2AD9AFBC00155F52 /* KeychainSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				A9FC4A162AD696CF00155F52 /* DragonBall_iOS_Avanzado.xcdatamodeld */,
+				A9FC4A4C2AD9B33D00155F52 /* SecureDataProvider.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -168,6 +175,7 @@
 		A9FC4A442AD6978C00155F52 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				A9FC4A4E2AD9B76100155F52 /* ApiProvider.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -205,6 +213,9 @@
 			dependencies = (
 			);
 			name = DragonBall_iOS_Avanzado;
+			packageProductDependencies = (
+				A9FC4A4A2AD9AFBC00155F52 /* KeychainSwift */,
+			);
 			productName = DragonBall_iOS_Avanzado;
 			productReference = A9FC4A0A2AD696CF00155F52 /* DragonBall_iOS_Avanzado.app */;
 			productType = "com.apple.product-type.application";
@@ -277,6 +288,9 @@
 				Base,
 			);
 			mainGroup = A9FC4A012AD696CF00155F52;
+			packageReferences = (
+				A9FC4A492AD9AFBC00155F52 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+			);
 			productRefGroup = A9FC4A0B2AD696CF00155F52 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -324,6 +338,8 @@
 				A9FC4A0E2AD696CF00155F52 /* AppDelegate.swift in Sources */,
 				A9FC4A102AD696CF00155F52 /* SceneDelegate.swift in Sources */,
 				A9FC4A482AD6AE8600155F52 /* LoginViewModel.swift in Sources */,
+				A9FC4A4D2AD9B33D00155F52 /* SecureDataProvider.swift in Sources */,
+				A9FC4A4F2AD9B76100155F52 /* ApiProvider.swift in Sources */,
 				A9FC4A182AD696CF00155F52 /* DragonBall_iOS_Avanzado.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -666,6 +682,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A9FC4A492AD9AFBC00155F52 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 20.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A9FC4A4A2AD9AFBC00155F52 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9FC4A492AD9AFBC00155F52 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		A9FC4A162AD696CF00155F52 /* DragonBall_iOS_Avanzado.xcdatamodeld */ = {
