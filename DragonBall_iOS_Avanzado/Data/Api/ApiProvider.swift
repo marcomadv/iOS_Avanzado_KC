@@ -10,6 +10,7 @@ import Foundation
 
 extension NotificationCenter {
     static let apiLoginNotification = Notification.Name("NOTIFICATION_API_LOGIN")
+    static let tokenKey = "KEY_TOKEN"
 }
 
 protocol ApiProviderProtocol {
@@ -41,8 +42,27 @@ class ApiProvider: ApiProviderProtocol {
         urlRequest.setValue("Basic \(loginData)", forHTTPHeaderField: "Authorization")
         
         URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-            print("Login response: \(String(describing: response))")
+            guard error == nil else {
+                //TODO: Enviar notificacion indicando el error
+                return
+            }
             
+            guard let data, (response as? HTTPURLResponse)?.statusCode == 200 else {
+                //TODO: Enviar notificacion indicando response error
+                return
+            }
+            
+            guard let responseData = String(data: data, encoding: .utf8) else {
+                //TODO: Enviar notificacion indicando response vacio
+                return
+            }
+            
+            NotificationCenter.default.post(
+                name: NotificationCenter.apiLoginNotification,
+                object: nil,
+                userInfo:[NotificationCenter.tokenKey: responseData]
+            )
         }.resume()
+        
     }
 }

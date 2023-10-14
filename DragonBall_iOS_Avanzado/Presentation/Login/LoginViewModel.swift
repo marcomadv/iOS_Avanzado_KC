@@ -59,9 +59,18 @@ class LoginViewModel: LoginViewControllerDelegate {
     }
     
     @objc func onLoginSuccess(_ notification: Notification) {
-        // TODO: Parsear resultado que vendra en notification.userInfo
+        //defer -> ejecuta el codigo de dentro despues de ejecutar toda la logica de la función
+        defer { viewState?(.loading(false)) }
+        
+        // Parsear resultado que vendra en notification.userInfo
+        guard let token = notification.userInfo?[NotificationCenter.tokenKey] as? String,
+              !token.isEmpty else {
+            return
+        }
+        
+        secureDataProvider.save(token: token)
+        viewState?(.navigateToNext)
     }
-    
     
     
     private func isValid(email: String?) -> Bool {
