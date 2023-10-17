@@ -85,8 +85,7 @@ class LoginViewController: UIViewController {
                     self?.passwordFieldError.isHidden = (error == nil || error?.isEmpty == true)
                     
                 case .navigateToNext:
-                    self?.loadingview.isHidden = true
-                    //TODO: Navegar a la siguiente vista
+                    break
                 }
             }
         }
