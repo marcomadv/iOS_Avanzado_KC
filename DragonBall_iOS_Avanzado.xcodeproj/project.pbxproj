@@ -24,6 +24,8 @@
 		A9FC4A932ADEAD2E00155F52 /* Heroes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9FC4A922ADEAD2E00155F52 /* Heroes.storyboard */; };
 		A9FC4A952ADEAD3C00155F52 /* HeroesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC4A942ADEAD3C00155F52 /* HeroesViewController.swift */; };
 		A9FC4A972ADEAD4700155F52 /* HeroesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC4A962ADEAD4700155F52 /* HeroesViewModel.swift */; };
+		A9FC4A9A2ADEBD8B00155F52 /* HeroCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC4A992ADEBD8B00155F52 /* HeroCellView.swift */; };
+		A9FC4A9C2ADEC0C800155F52 /* HeroeCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9FC4A9B2ADEC0C800155F52 /* HeroeCellView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		A9FC4A922ADEAD2E00155F52 /* Heroes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Heroes.storyboard; sourceTree = "<group>"; };
 		A9FC4A942ADEAD3C00155F52 /* HeroesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesViewController.swift; sourceTree = "<group>"; };
 		A9FC4A962ADEAD4700155F52 /* HeroesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesViewModel.swift; sourceTree = "<group>"; };
+		A9FC4A992ADEBD8B00155F52 /* HeroCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCellView.swift; sourceTree = "<group>"; };
+		A9FC4A9B2ADEC0C800155F52 /* HeroeCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeroeCellView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,11 +211,21 @@
 		A9FC4A912ADEAD0700155F52 /* Heroes */ = {
 			isa = PBXGroup;
 			children = (
+				A9FC4A982ADEB97400155F52 /* Cell */,
 				A9FC4A922ADEAD2E00155F52 /* Heroes.storyboard */,
 				A9FC4A942ADEAD3C00155F52 /* HeroesViewController.swift */,
 				A9FC4A962ADEAD4700155F52 /* HeroesViewModel.swift */,
 			);
 			path = Heroes;
+			sourceTree = "<group>";
+		};
+		A9FC4A982ADEB97400155F52 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A9FC4A992ADEBD8B00155F52 /* HeroCellView.swift */,
+				A9FC4A9B2ADEC0C800155F52 /* HeroeCellView.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,6 +340,7 @@
 			files = (
 				A9FC4A1D2AD696D000155F52 /* LaunchScreen.storyboard in Resources */,
 				A9FC4A1A2AD696D000155F52 /* Assets.xcassets in Resources */,
+				A9FC4A9C2ADEC0C800155F52 /* HeroeCellView.xib in Resources */,
 				A9FC4A932ADEAD2E00155F52 /* Heroes.storyboard in Resources */,
 				A9FC4A152AD696CF00155F52 /* Login.storyboard in Resources */,
 			);
@@ -358,6 +373,7 @@
 				A9FC4A102AD696CF00155F52 /* SceneDelegate.swift in Sources */,
 				A9FC4A972ADEAD4700155F52 /* HeroesViewModel.swift in Sources */,
 				A9FC4A482AD6AE8600155F52 /* LoginViewModel.swift in Sources */,
+				A9FC4A9A2ADEBD8B00155F52 /* HeroCellView.swift in Sources */,
 				A9FC4A4D2AD9B33D00155F52 /* SecureDataProvider.swift in Sources */,
 				A9FC4A4F2AD9B76100155F52 /* ApiProvider.swift in Sources */,
 				A9FC4A182AD696CF00155F52 /* DragonBall_iOS_Avanzado.xcdatamodeld in Sources */,
