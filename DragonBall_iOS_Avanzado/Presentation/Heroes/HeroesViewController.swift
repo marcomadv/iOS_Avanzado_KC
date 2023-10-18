@@ -9,8 +9,10 @@ import UIKit
 
 //MARK: - View Protocol
 protocol HeroesViewControllerDelegate {
-    var viesState: ((HeroesViewState) -> Void)? { get set }
+    var viewState: ((HeroesViewState) -> Void)? { get set }
+    var heroesCount: Int { get }
     func onViewAppear()
+    func heroBy(index: Int) -> Hero? 
 }
 
 //MARK: - View State
@@ -23,11 +25,17 @@ enum HeroesViewState {
 class HeroesViewController: UIViewController {
     //MARK: - IBOutlet
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var loadingview: UIView!
+    
+    //MARK: - Public Properties
+    var viewModel: HeroesViewControllerDelegate?
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initViews()
+        setObservers()
+        viewModel?.onViewAppear()
     }
     
     //MARK: - Private functions
@@ -38,12 +46,26 @@ class HeroesViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    private func setObservers() {
+        viewModel?.viewState = { [weak self] state in
+            DispatchQueue.main.async {
+                switch state {
+                case .loading(let isLoading):
+                    self?.loadingview.isHidden = !isLoading
+                
+                case .updateData:
+                    self?.tableView.reloadData()
+                }
+            }
+        }
+    }
 }
 
 //MARK: - Extension
 extension HeroesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        viewModel?.heroesCount ?? 0
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -54,7 +76,13 @@ extension HeroesViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HeroCellView.identifier, for: indexPath) as? HeroCellView else {
             return UITableViewCell()
         }
-        //TODO: Llamar a cell.update
+        if let hero = viewModel?.heroBy(index: indexPath.row) {
+            cell.updateView(
+                name: hero.name,
+                photo: hero.photo,
+                description: hero.description
+            )
+        }
         
         return cell
     }

@@ -85,7 +85,7 @@ class LoginViewController: UIViewController {
                     self?.passwordFieldError.isHidden = (error == nil || error?.isEmpty == true)
                     
                 case .navigateToNext:
-                    break
+                    self?.performSegue(withIdentifier: "LOGIN_TO_HERO ", sender: nil)
                 }
             }
         }

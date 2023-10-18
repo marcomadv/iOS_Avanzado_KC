@@ -21,17 +21,36 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <sections/>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="suc-eK-Li1">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="LTI-pJ-xDf">
+                                        <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                                        <color key="color" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.69443294700000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="LTI-pJ-xDf" firstAttribute="centerX" secondItem="suc-eK-Li1" secondAttribute="centerX" id="8se-6R-vWy"/>
+                                    <constraint firstItem="LTI-pJ-xDf" firstAttribute="centerY" secondItem="suc-eK-Li1" secondAttribute="centerY" id="9dE-wZ-Sz1"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Ka0-IG-u6t" secondAttribute="trailing" id="1de-oP-pra"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Ka0-IG-u6t" secondAttribute="bottom" id="25Q-EB-QAs"/>
+                            <constraint firstItem="suc-eK-Li1" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Uuf-dm-QNp"/>
                             <constraint firstItem="Ka0-IG-u6t" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="eRn-ct-RjF"/>
+                            <constraint firstAttribute="bottom" secondItem="suc-eK-Li1" secondAttribute="bottom" id="elK-EZ-ljp"/>
+                            <constraint firstItem="suc-eK-Li1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="iTY-LM-Wp2"/>
+                            <constraint firstItem="suc-eK-Li1" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="tOP-2m-wM6"/>
                             <constraint firstItem="Ka0-IG-u6t" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="zEm-ia-wVt"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loadingview" destination="suc-eK-Li1" id="XBN-fd-kHt"/>
                         <outlet property="tableView" destination="Ka0-IG-u6t" id="01T-4Y-USB"/>
                     </connections>
                 </viewController>
