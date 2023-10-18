@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9D480232ADFD60B003FA1CE /* HeroDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D480222ADFD60B003FA1CE /* HeroDAO.swift */; };
 		A9FC4A0E2AD696CF00155F52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC4A0D2AD696CF00155F52 /* AppDelegate.swift */; };
 		A9FC4A102AD696CF00155F52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC4A0F2AD696CF00155F52 /* SceneDelegate.swift */; };
 		A9FC4A122AD696CF00155F52 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC4A112AD696CF00155F52 /* LoginViewController.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A9D480222ADFD60B003FA1CE /* HeroDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDAO.swift; sourceTree = "<group>"; };
 		A9FC4A0A2AD696CF00155F52 /* DragonBall_iOS_Avanzado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragonBall_iOS_Avanzado.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FC4A0D2AD696CF00155F52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9FC4A0F2AD696CF00155F52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +98,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A9D480212ADFD5FC003FA1CE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A9D480222ADFD60B003FA1CE /* HeroDAO.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		A9FC4A012AD696CF00155F52 = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +186,7 @@
 		A9FC4A432AD6978400155F52 /* Local */ = {
 			isa = PBXGroup;
 			children = (
+				A9D480212ADFD5FC003FA1CE /* Models */,
 				A9FC4A162AD696CF00155F52 /* DragonBall_iOS_Avanzado.xcdatamodeld */,
 				A9FC4A4C2AD9B33D00155F52 /* SecureDataProvider.swift */,
 			);
@@ -372,6 +383,7 @@
 				A9FC4A952ADEAD3C00155F52 /* HeroesViewController.swift in Sources */,
 				A9FC4A102AD696CF00155F52 /* SceneDelegate.swift in Sources */,
 				A9FC4A972ADEAD4700155F52 /* HeroesViewModel.swift in Sources */,
+				A9D480232ADFD60B003FA1CE /* HeroDAO.swift in Sources */,
 				A9FC4A482AD6AE8600155F52 /* LoginViewModel.swift in Sources */,
 				A9FC4A9A2ADEBD8B00155F52 /* HeroCellView.swift in Sources */,
 				A9FC4A4D2AD9B33D00155F52 /* SecureDataProvider.swift in Sources */,
