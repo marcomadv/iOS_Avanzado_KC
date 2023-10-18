@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A9D480232ADFD60B003FA1CE /* HeroDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D480222ADFD60B003FA1CE /* HeroDAO.swift */; };
+		A9D480252ADFD8F1003FA1CE /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D480242ADFD8F1003FA1CE /* CoreDataStack.swift */; };
+		A9D480292ADFE31C003FA1CE /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D480282ADFE31C003FA1CE /* Hero.swift */; };
 		A9FC4A0E2AD696CF00155F52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC4A0D2AD696CF00155F52 /* AppDelegate.swift */; };
 		A9FC4A102AD696CF00155F52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC4A0F2AD696CF00155F52 /* SceneDelegate.swift */; };
 		A9FC4A122AD696CF00155F52 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC4A112AD696CF00155F52 /* LoginViewController.swift */; };
@@ -48,6 +50,8 @@
 
 /* Begin PBXFileReference section */
 		A9D480222ADFD60B003FA1CE /* HeroDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDAO.swift; sourceTree = "<group>"; };
+		A9D480242ADFD8F1003FA1CE /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		A9D480282ADFE31C003FA1CE /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		A9FC4A0A2AD696CF00155F52 /* DragonBall_iOS_Avanzado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragonBall_iOS_Avanzado.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FC4A0D2AD696CF00155F52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9FC4A0F2AD696CF00155F52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +106,23 @@
 			isa = PBXGroup;
 			children = (
 				A9D480222ADFD60B003FA1CE /* HeroDAO.swift */,
+				A9D480242ADFD8F1003FA1CE /* CoreDataStack.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A9D480262ADFE304003FA1CE /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				A9D480272ADFE30F003FA1CE /* Models */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		A9D480272ADFE30F003FA1CE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A9D480282ADFE31C003FA1CE /* Hero.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -129,6 +150,7 @@
 		A9FC4A0C2AD696CF00155F52 /* DragonBall_iOS_Avanzado */ = {
 			isa = PBXGroup;
 			children = (
+				A9D480262ADFE304003FA1CE /* Domain */,
 				A9FC4A0D2AD696CF00155F52 /* AppDelegate.swift */,
 				A9FC4A0F2AD696CF00155F52 /* SceneDelegate.swift */,
 				A9FC4A1E2AD696D000155F52 /* Info.plist */,
@@ -381,6 +403,7 @@
 				A9FC4A122AD696CF00155F52 /* LoginViewController.swift in Sources */,
 				A9FC4A0E2AD696CF00155F52 /* AppDelegate.swift in Sources */,
 				A9FC4A952ADEAD3C00155F52 /* HeroesViewController.swift in Sources */,
+				A9D480252ADFD8F1003FA1CE /* CoreDataStack.swift in Sources */,
 				A9FC4A102AD696CF00155F52 /* SceneDelegate.swift in Sources */,
 				A9FC4A972ADEAD4700155F52 /* HeroesViewModel.swift in Sources */,
 				A9D480232ADFD60B003FA1CE /* HeroDAO.swift in Sources */,
@@ -388,6 +411,7 @@
 				A9FC4A9A2ADEBD8B00155F52 /* HeroCellView.swift in Sources */,
 				A9FC4A4D2AD9B33D00155F52 /* SecureDataProvider.swift in Sources */,
 				A9FC4A4F2AD9B76100155F52 /* ApiProvider.swift in Sources */,
+				A9D480292ADFE31C003FA1CE /* Hero.swift in Sources */,
 				A9FC4A182AD696CF00155F52 /* DragonBall_iOS_Avanzado.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

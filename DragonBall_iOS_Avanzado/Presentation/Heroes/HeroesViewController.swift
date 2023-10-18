@@ -7,6 +7,19 @@
 
 import UIKit
 
+//MARK: - View Protocol
+protocol HeroesViewControllerDelegate {
+    var viesState: ((HeroesViewState) -> Void)? { get set }
+    func onViewAppear()
+}
+
+//MARK: - View State
+enum HeroesViewState {
+    case loading(_ isLoading: Bool)
+    case updateData
+}
+
+//MARK: - Class
 class HeroesViewController: UIViewController {
     //MARK: - IBOutlet
     @IBOutlet weak var tableView: UITableView!

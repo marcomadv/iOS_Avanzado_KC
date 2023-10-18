@@ -15,6 +15,7 @@ extension NotificationCenter {
 
 protocol ApiProviderProtocol {
     func login(for user: String, with password: String)
+    func getHeroes(by name: String?, token: String, completion: ((Heroes) -> Void)?)
 }
 
 class ApiProvider: ApiProviderProtocol {
@@ -23,6 +24,7 @@ class ApiProvider: ApiProviderProtocol {
     
     private enum Endpoint {
         static let login = "/auth/login"
+        static let heroes = "/heros/all"
     }
     
     //MARK: - ApiProviderProtocol
@@ -63,6 +65,43 @@ class ApiProvider: ApiProviderProtocol {
                 userInfo:[NotificationCenter.tokenKey: responseData]
             )
         }.resume()
+    }
+    
+    func getHeroes(by name: String?, token: String, completion: ((Heroes) -> Void)?) {
+        guard let url = URL(string: "\(ApiProvider.apiBaseURL)\(Endpoint.heroes)") else {
+            //TODO: Enviar notificacion indicando el error
+            return
+        }
+        let jsonData: [String: Any] = ["name": name ?? ""]
+        let jsonParameters = try? JSONSerialization.data(withJSONObject: jsonData)
         
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        urlRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        
+        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        urlRequest.httpBody = jsonParameters
+        
+        URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+            guard error == nil else {
+                //TODO: Enviar notificacion indicando el error
+                completion?([])
+                return
+            }
+            
+            guard let data, (response as? HTTPURLResponse)?.statusCode == 200 else {
+                //TODO: Enviar notificacion indicando response error
+                completion?([])
+                return
+            }
+            
+            guard let heroes = try? JSONDecoder().decode(Heroes.self, from: data) else {
+                completion?([])
+                return
+            }
+            
+            print("API RESPONSE - GET HEROES: \(heroes)")
+            completion?(heroes)
+        }.resume()
     }
 }
