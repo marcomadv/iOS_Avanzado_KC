@@ -2,7 +2,7 @@
 //  HeroCellView.swift
 //  DragonBall_iOS_Avanzado
 //
-//  Created by Marco Muñoz on 17/10/23.
+//  Created by Marco Muñoz on 19/10/23.
 //
 
 import UIKit
@@ -34,6 +34,9 @@ class HeroCellView: UITableViewCell {
         containerView.layer.shadowOffset = .zero
         containerView.layer.shadowRadius = 8
         containerView.layer.shadowOpacity = 0.5
+        
+        photo.layer.cornerRadius = 8
+        photo.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
         
         selectionStyle = .none
     }
