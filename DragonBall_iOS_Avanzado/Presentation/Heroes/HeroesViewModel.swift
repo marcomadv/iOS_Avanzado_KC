@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 
 class HeroesViewModel: HeroesViewControllerDelegate {
@@ -34,7 +35,9 @@ class HeroesViewModel: HeroesViewControllerDelegate {
             guard let token = self.secureDataProvider.getToken() else { return }
             self.apiProvider.getHeroes(by: nil, token: token) { heroes in
                 self.heroes = heroes
+                
                 self.viewState?(.updateData)
+                self.saveHeroes()
             }
         }
     }
@@ -46,4 +49,21 @@ class HeroesViewModel: HeroesViewControllerDelegate {
             return nil
         }
     }
+    
+    func saveHeroes() {
+        let moc = CoreDataStack.shared.persistentContainer.viewContext
+        let entityHero = NSEntityDescription.entity(forEntityName: HeroDao.entityName, in: moc)
+        var heroDAO = HeroDao(entity: entityHero!, insertInto: moc)
+        
+        for heroes in heroes {
+            heroDAO.setValue(heroes.name, forKey: "name")
+            heroDAO.setValue(heroes.id, forKey: "id")
+            heroDAO.setValue(heroes.description, forKey: "heroDescription")
+            heroDAO.setValue(heroes.photo, forKey: "photo")
+            heroDAO.setValue(heroes.isFavorite, forKey: "favorite")
+        }
+        try? moc.save()
+    }
 }
+
+

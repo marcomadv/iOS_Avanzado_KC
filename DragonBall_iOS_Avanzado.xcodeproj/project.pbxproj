@@ -152,12 +152,12 @@
 		A9FC4A0C2AD696CF00155F52 /* DragonBall_iOS_Avanzado */ = {
 			isa = PBXGroup;
 			children = (
-				A9D480262ADFE304003FA1CE /* Domain */,
 				A9FC4A0D2AD696CF00155F52 /* AppDelegate.swift */,
 				A9FC4A0F2AD696CF00155F52 /* SceneDelegate.swift */,
 				A9FC4A1E2AD696D000155F52 /* Info.plist */,
 				A9FC4A412AD696DE00155F52 /* Resources */,
 				A9FC4A422AD696E500155F52 /* Data */,
+				A9D480262ADFE304003FA1CE /* Domain */,
 				A9FC4A402AD696D600155F52 /* Presentation */,
 			);
 			path = DragonBall_iOS_Avanzado;

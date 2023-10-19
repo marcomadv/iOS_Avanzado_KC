@@ -22,7 +22,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="HUC-hm-Prv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="45"/>
-                                <color key="textColor" red="1" green="0.63967813328626633" blue="0.13847212377398432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" systemColor="systemOrangeColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="6HE-rO-T68">
