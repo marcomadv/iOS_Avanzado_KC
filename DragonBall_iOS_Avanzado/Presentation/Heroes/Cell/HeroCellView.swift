@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class HeroCellView: UITableViewCell {
     static let identifier: String = "HeroCellView"
@@ -43,7 +44,6 @@ class HeroCellView: UITableViewCell {
     ) {
         self.name.text = name
         self.heroeDescription.text = description
-        
-        //TODO: Descargar imagen y setearla en el imageview de la photo
+        self.photo.kf.setImage(with: URL(string: photo ?? ""))
     }
 }

@@ -10,6 +10,7 @@ import UIKit
 //MARK: - View Protocol
 protocol LoginViewControllerDelegate {
     var viewState: ((LoginViewState) -> Void)? {  get set }
+    var heroesViewModel: HeroesViewControllerDelegate { get }
     func onLoginPressed(email: String?, password: String?)
 }
 
@@ -52,6 +53,19 @@ class LoginViewController: UIViewController {
         setObservers()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "LOGIN_TO_HERO ",
+              let heroesViewController = segue.destination as? HeroesViewController else {
+            return
+        }
+        
+        heroesViewController.viewModel = viewModel?.heroesViewModel
+        
+        // sin crear la variable en loginviewmodel, le asignamos el viewmodel a heroescontroller directamente
+        //heroesViewController.viewModel = HeroesViewModel(apiProvider: ApiProvider(), secureDataProvider: SecureDataProvider())
+    }
+    
+    //MARK: - Private functions
     private func initViews() {
         emailField.delegate = self
         emailField.tag = FieldType.email.rawValue
