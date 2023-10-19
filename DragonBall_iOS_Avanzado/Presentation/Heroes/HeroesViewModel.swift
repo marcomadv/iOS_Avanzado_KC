@@ -37,6 +37,7 @@ class HeroesViewModel: HeroesViewControllerDelegate {
                 self.heroes = heroes
                 
                 self.viewState?(.updateData)
+                self.deleteAllHeroes()
                 self.saveHeroes()
             }
         }
@@ -62,6 +63,16 @@ class HeroesViewModel: HeroesViewControllerDelegate {
             heroDAO.setValue(heroes.photo, forKey: "photo")
             heroDAO.setValue(heroes.isFavorite, forKey: "favorite")
         }
+        try? moc.save()
+    }
+    
+    func deleteAllHeroes() {
+        let moc = CoreDataStack.shared.persistentContainer.viewContext
+        let fetchHeroes = NSFetchRequest<HeroDao>(entityName: HeroDao.entityName)
+        guard let moc,
+              let heroes = try? moc.fetch(fetchHeroes) else { return }
+
+        heroes.forEach { moc.delete($0) }
         try? moc.save()
     }
 }
