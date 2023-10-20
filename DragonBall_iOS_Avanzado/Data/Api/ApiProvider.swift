@@ -100,7 +100,7 @@ class ApiProvider: ApiProviderProtocol {
                 return
             }
             
-            print("API RESPONSE - GET HEROES: \(heroes)")
+//            print("API RESPONSE - GET HEROES: \(heroes)")
             completion?(heroes)
         }.resume()
     }
