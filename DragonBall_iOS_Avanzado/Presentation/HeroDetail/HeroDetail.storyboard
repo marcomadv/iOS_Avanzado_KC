@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VLs-Ho-faC">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Hero Detail View Controller-->
+        <scene sceneID="vcn-fp-gmU">
+            <objects>
+                <viewController storyboardIdentifier="HeroDetailViewController" id="VLs-Ho-faC" customClass="HeroDetailViewController" customModule="DragonBall_iOS_Avanzado" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kiV-Zk-quG">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRl-7k-Ave">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="410"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="CRl-7k-Ave" secondAttribute="height" multiplier="393:410" id="6vA-mE-3ra"/>
+                                </constraints>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YSJ-Ja-J4b">
+                                <rect key="frame" x="269" y="302" width="108" height="108"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="YSJ-Ja-J4b" secondAttribute="height" multiplier="1:1" id="IHr-IH-X2h"/>
+                                    <constraint firstAttribute="height" constant="108" id="KTm-S1-Ge6"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRA-IX-5sc">
+                                <rect key="frame" x="16" y="430" width="361" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="TLP-hv-rVr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="22"/>
+                                <color key="textColor" red="1" green="0.63967813330000001" blue="0.13847212380000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSh-HL-N1r">
+                                <rect key="frame" x="16" y="471" width="361" height="355"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDU-yP-y6t">
+                                <rect key="frame" x="15.999999999999996" y="48" width="39.666666666666657" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system">
+                                    <color key="baseForegroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="back:" destination="VLs-Ho-faC" eventType="touchUpInside" id="qex-Ir-ZtR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PgH-ME-Yd7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="CRl-7k-Ave" firstAttribute="leading" secondItem="PgH-ME-Yd7" secondAttribute="leading" id="3fY-fC-DEH"/>
+                            <constraint firstItem="GRA-IX-5sc" firstAttribute="top" secondItem="CRl-7k-Ave" secondAttribute="bottom" constant="20" id="4IX-S7-6DM"/>
+                            <constraint firstItem="CRl-7k-Ave" firstAttribute="top" secondItem="kiV-Zk-quG" secondAttribute="top" id="8I0-1h-snP"/>
+                            <constraint firstItem="XSh-HL-N1r" firstAttribute="top" secondItem="GRA-IX-5sc" secondAttribute="bottom" constant="20" id="B54-B8-arb"/>
+                            <constraint firstItem="PgH-ME-Yd7" firstAttribute="trailing" secondItem="GRA-IX-5sc" secondAttribute="trailing" constant="16" id="BWS-H0-d8o"/>
+                            <constraint firstItem="CRl-7k-Ave" firstAttribute="trailing" secondItem="PgH-ME-Yd7" secondAttribute="trailing" id="OqE-d5-vFK"/>
+                            <constraint firstItem="gDU-yP-y6t" firstAttribute="top" secondItem="kiV-Zk-quG" secondAttribute="top" constant="48" id="Pmz-OC-TGj"/>
+                            <constraint firstItem="GRA-IX-5sc" firstAttribute="leading" secondItem="PgH-ME-Yd7" secondAttribute="leading" constant="16" id="Tt0-Dx-VXP"/>
+                            <constraint firstItem="gDU-yP-y6t" firstAttribute="leading" secondItem="PgH-ME-Yd7" secondAttribute="leading" constant="16" id="pNl-4f-sFY"/>
+                            <constraint firstItem="PgH-ME-Yd7" firstAttribute="trailing" secondItem="YSJ-Ja-J4b" secondAttribute="trailing" constant="16" id="saD-56-8LV"/>
+                            <constraint firstItem="XSh-HL-N1r" firstAttribute="bottom" secondItem="PgH-ME-Yd7" secondAttribute="bottom" constant="8" id="sqZ-r4-EK6"/>
+                            <constraint firstItem="YSJ-Ja-J4b" firstAttribute="bottom" secondItem="CRl-7k-Ave" secondAttribute="bottom" id="ubz-PJ-6VI"/>
+                            <constraint firstItem="PgH-ME-Yd7" firstAttribute="trailing" secondItem="XSh-HL-N1r" secondAttribute="trailing" constant="16" id="vl4-ig-wF5"/>
+                            <constraint firstItem="XSh-HL-N1r" firstAttribute="leading" secondItem="PgH-ME-Yd7" secondAttribute="leading" constant="16" id="zW1-Ge-TOG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="heroeDescription" destination="XSh-HL-N1r" id="4R7-q5-de7"/>
+                        <outlet property="mapView" destination="CRl-7k-Ave" id="Ofa-wm-SaH"/>
+                        <outlet property="name" destination="GRA-IX-5sc" id="bax-Fw-4d5"/>
+                        <outlet property="photo" destination="YSJ-Ja-J4b" id="WQ9-B2-rse"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="01d-Iy-NKL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138.1679389312977" y="-2.1126760563380285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 @objc(HeroDAO)
-class HeroDao: NSManagedObject {
+class HeroDAO: NSManagedObject {
     static let entityName = "HeroDao"
     
     @NSManaged var id: String?

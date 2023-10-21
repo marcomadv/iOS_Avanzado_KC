@@ -32,18 +32,24 @@ class SplashViewController: UIViewController {
         viewModel?.onViewAppear()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-            case "SPLASH_TO_LOGIN":
-                guard let loginViewController = segue.destination as? LoginViewController else { return }
-                loginViewController.viewModel = viewModel?.loginViewModel
+        case "SPLASH_TO_LOGIN":
+            guard let loginViewController = segue.destination as? LoginViewController else { return }
+            loginViewController.viewModel = viewModel?.loginViewModel
             
-            case "SPLASH_TO_HEROES":
-                guard let heroesViewController = segue.destination as? HeroesViewController else { return }
-                heroesViewController.viewModel = HeroesViewModel(apiProvider: ApiProvider(), secureDataProvider: SecureDataProvider())
+        case "SPLASH_TO_HEROES":
+            guard let heroesViewController = segue.destination as? HeroesViewController else { return }
+            heroesViewController.viewModel = viewModel?.heroesViewModel
             
-            default:
-                break
+        default:
+            break
         }
     }
     

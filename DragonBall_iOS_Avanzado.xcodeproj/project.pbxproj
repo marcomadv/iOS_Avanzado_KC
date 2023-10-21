@@ -16,6 +16,12 @@
 		A9D480332AE27370003FA1CE /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9D480322AE27370003FA1CE /* Splash.storyboard */; };
 		A9D480352AE2737F003FA1CE /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D480342AE2737F003FA1CE /* SplashViewController.swift */; };
 		A9D480372AE2738D003FA1CE /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D480362AE2738D003FA1CE /* SplashViewModel.swift */; };
+		A9D4803F2AE2CE50003FA1CE /* HeroDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D4803E2AE2CE50003FA1CE /* HeroDetailViewController.swift */; };
+		A9D480412AE2CEC9003FA1CE /* HeroDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D480402AE2CEC9003FA1CE /* HeroDetailViewModel.swift */; };
+		A9D480432AE2E057003FA1CE /* HeroLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D480422AE2E057003FA1CE /* HeroLocations.swift */; };
+		A9D480462AE3CEC8003FA1CE /* HeroAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D480452AE3CEC8003FA1CE /* HeroAnnotation.swift */; };
+		A9D480482AE3D360003FA1CE /* HeroDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9D480472AE3D360003FA1CE /* HeroDetail.storyboard */; };
+		A9E408A82AE3E59B003B1AAC /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E408A72AE3E59B003B1AAC /* CoreDataProvider.swift */; };
 		A9FC4A0E2AD696CF00155F52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC4A0D2AD696CF00155F52 /* AppDelegate.swift */; };
 		A9FC4A102AD696CF00155F52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC4A0F2AD696CF00155F52 /* SceneDelegate.swift */; };
 		A9FC4A122AD696CF00155F52 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC4A112AD696CF00155F52 /* LoginViewController.swift */; };
@@ -61,6 +67,12 @@
 		A9D480322AE27370003FA1CE /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		A9D480342AE2737F003FA1CE /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		A9D480362AE2738D003FA1CE /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		A9D4803E2AE2CE50003FA1CE /* HeroDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailViewController.swift; sourceTree = "<group>"; };
+		A9D480402AE2CEC9003FA1CE /* HeroDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailViewModel.swift; sourceTree = "<group>"; };
+		A9D480422AE2E057003FA1CE /* HeroLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroLocations.swift; sourceTree = "<group>"; };
+		A9D480452AE3CEC8003FA1CE /* HeroAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroAnnotation.swift; sourceTree = "<group>"; };
+		A9D480472AE3D360003FA1CE /* HeroDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HeroDetail.storyboard; sourceTree = "<group>"; };
+		A9E408A72AE3E59B003B1AAC /* CoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProvider.swift; sourceTree = "<group>"; };
 		A9FC4A0A2AD696CF00155F52 /* DragonBall_iOS_Avanzado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragonBall_iOS_Avanzado.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FC4A0D2AD696CF00155F52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9FC4A0F2AD696CF00155F52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				A9D480222ADFD60B003FA1CE /* HeroDAO.swift */,
-				A9D480242ADFD8F1003FA1CE /* CoreDataStack.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -131,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				A9D480282ADFE31C003FA1CE /* Hero.swift */,
+				A9D480422AE2E057003FA1CE /* HeroLocations.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -143,6 +155,25 @@
 				A9D480362AE2738D003FA1CE /* SplashViewModel.swift */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		A9D4803B2AE2CE2C003FA1CE /* HeroDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A9D480442AE3CEA7003FA1CE /* MapAnnotations */,
+				A9D480472AE3D360003FA1CE /* HeroDetail.storyboard */,
+				A9D4803E2AE2CE50003FA1CE /* HeroDetailViewController.swift */,
+				A9D480402AE2CEC9003FA1CE /* HeroDetailViewModel.swift */,
+			);
+			path = HeroDetail;
+			sourceTree = "<group>";
+		};
+		A9D480442AE3CEA7003FA1CE /* MapAnnotations */ = {
+			isa = PBXGroup;
+			children = (
+				A9D480452AE3CEC8003FA1CE /* HeroAnnotation.swift */,
+			);
+			path = MapAnnotations;
 			sourceTree = "<group>";
 		};
 		A9FC4A012AD696CF00155F52 = {
@@ -199,10 +230,11 @@
 		A9FC4A402AD696D600155F52 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				A9D480312AE27357003FA1CE /* Splash */,
 				A9FC4A452AD697D600155F52 /* Launch */,
+				A9D480312AE27357003FA1CE /* Splash */,
 				A9FC4A462AD697E300155F52 /* Login */,
 				A9FC4A912ADEAD0700155F52 /* Heroes */,
+				A9D4803B2AE2CE2C003FA1CE /* HeroDetail */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -229,7 +261,9 @@
 			children = (
 				A9D480212ADFD5FC003FA1CE /* Models */,
 				A9FC4A162AD696CF00155F52 /* DragonBall_iOS_Avanzado.xcdatamodeld */,
+				A9D480242ADFD8F1003FA1CE /* CoreDataStack.swift */,
 				A9FC4A4C2AD9B33D00155F52 /* SecureDataProvider.swift */,
+				A9E408A72AE3E59B003B1AAC /* CoreDataProvider.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -396,6 +430,7 @@
 				A9FC4A1A2AD696D000155F52 /* Assets.xcassets in Resources */,
 				A9D480302AE1325C003FA1CE /* HeroCellView.xib in Resources */,
 				A9FC4A932ADEAD2E00155F52 /* Heroes.storyboard in Resources */,
+				A9D480482AE3D360003FA1CE /* HeroDetail.storyboard in Resources */,
 				A9FC4A152AD696CF00155F52 /* Login.storyboard in Resources */,
 				A9D480332AE27370003FA1CE /* Splash.storyboard in Resources */,
 			);
@@ -424,6 +459,8 @@
 			files = (
 				A9D480372AE2738D003FA1CE /* SplashViewModel.swift in Sources */,
 				A9FC4A122AD696CF00155F52 /* LoginViewController.swift in Sources */,
+				A9D480432AE2E057003FA1CE /* HeroLocations.swift in Sources */,
+				A9D480462AE3CEC8003FA1CE /* HeroAnnotation.swift in Sources */,
 				A9FC4A0E2AD696CF00155F52 /* AppDelegate.swift in Sources */,
 				A9FC4A952ADEAD3C00155F52 /* HeroesViewController.swift in Sources */,
 				A9D480252ADFD8F1003FA1CE /* CoreDataStack.swift in Sources */,
@@ -431,12 +468,15 @@
 				A9D480352AE2737F003FA1CE /* SplashViewController.swift in Sources */,
 				A9FC4A972ADEAD4700155F52 /* HeroesViewModel.swift in Sources */,
 				A9D4802F2AE1325C003FA1CE /* HeroCellView.swift in Sources */,
+				A9D4803F2AE2CE50003FA1CE /* HeroDetailViewController.swift in Sources */,
 				A9D480232ADFD60B003FA1CE /* HeroDAO.swift in Sources */,
 				A9FC4A482AD6AE8600155F52 /* LoginViewModel.swift in Sources */,
 				A9FC4A4D2AD9B33D00155F52 /* SecureDataProvider.swift in Sources */,
 				A9FC4A4F2AD9B76100155F52 /* ApiProvider.swift in Sources */,
 				A9D480292ADFE31C003FA1CE /* Hero.swift in Sources */,
 				A9FC4A182AD696CF00155F52 /* DragonBall_iOS_Avanzado.xcdatamodeld in Sources */,
+				A9D480412AE2CEC9003FA1CE /* HeroDetailViewModel.swift in Sources */,
+				A9E408A82AE3E59B003B1AAC /* CoreDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

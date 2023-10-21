@@ -12,7 +12,8 @@ protocol HeroesViewControllerDelegate {
     var viewState: ((HeroesViewState) -> Void)? { get set }
     var heroesCount: Int { get }
     func onViewAppear()
-    func heroBy(index: Int) -> Hero? 
+    func heroBy(index: Int) -> Hero?
+    func heroDetailViewModel(index: Int) -> HeroDetailViewControllerDelegate?
 }
 
 //MARK: - View State
@@ -27,6 +28,8 @@ class HeroesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loadingview: UIView!
     
+    @IBAction func logOut(_ sender: Any) {
+    }
     //MARK: - Public Properties
     var viewModel: HeroesViewControllerDelegate?
     
@@ -38,6 +41,16 @@ class HeroesViewController: UIViewController {
         viewModel?.onViewAppear()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "HEROES_TO_HERO_DETAIL",
+              let index = sender as? Int,
+              let heroDetailViewController = segue.destination as? HeroDetailViewController,
+              let detailViewModel = viewModel?.heroDetailViewModel(index: index) else {
+                  return
+              }
+        
+        heroDetailViewController.viewModel = detailViewModel
+    }
     //MARK: - Private functions
     private func initViews() {
         
@@ -53,7 +66,6 @@ class HeroesViewController: UIViewController {
                 switch state {
                 case .loading(let isLoading):
                     self?.loadingview.isHidden = !isLoading
-                
                 case .updateData:
                     self?.tableView.reloadData()
                 }
@@ -88,6 +100,6 @@ extension HeroesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //TODO: Navegar a detalle Hero
+        performSegue(withIdentifier: "HEROES_TO_HERO_DETAIL", sender: indexPath.row)
     }
 }

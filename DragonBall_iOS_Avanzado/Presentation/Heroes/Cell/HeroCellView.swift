@@ -30,9 +30,9 @@ class HeroCellView: UITableViewCell {
         
         //propiedades de la tarjeta
         containerView.layer.cornerRadius = 8
-        containerView.layer.shadowColor = UIColor.gray.cgColor
+        containerView.layer.shadowColor = UIColor.systemBlue.cgColor
         containerView.layer.shadowOffset = .zero
-        containerView.layer.shadowRadius = 8
+        containerView.layer.shadowRadius = 9
         containerView.layer.shadowOpacity = 0.5
         
         photo.layer.cornerRadius = 8

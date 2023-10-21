@@ -19,8 +19,8 @@ class HeroesViewModel: HeroesViewControllerDelegate {
     var heroesCount: Int {
         heroes.count
     }
-    private var heroes: Heroes = []
     
+    private var heroes: Heroes = []
     //MARK: - Initializers
     init(apiProvider: ApiProviderProtocol, secureDataProvider: SecureDataProviderProtocol) {
         self.apiProvider = apiProvider
@@ -33,14 +33,20 @@ class HeroesViewModel: HeroesViewControllerDelegate {
         DispatchQueue.global().async {
             defer { self.viewState?(.loading(false)) }
             guard let token = self.secureDataProvider.getToken() else { return }
+            
             self.apiProvider.getHeroes(by: nil, token: token) { heroes in
                 self.heroes = heroes
+                self.viewState?(.updateData)
+                DispatchQueue.main.async {
+                    let coreDataprovider = CoreDataProvider()
+                    for hero in heroes {
+                        coreDataprovider.saveHero(heroes: [hero])
+                    }
+                }
                 
 //                self.saveHeroes()
-                self.viewState?(.updateData)
-                //self.deleteAllHeroes()
-              
                 
+                //self.deleteAllHeroes()
             }
         }
     }
@@ -53,30 +59,13 @@ class HeroesViewModel: HeroesViewControllerDelegate {
         }
     }
     
-//    func saveHeroes() {
-//        let moc = CoreDataStack.shared.persistentContainer.viewContext
-//        let entityHero = NSEntityDescription.entity(forEntityName: HeroDao.entityName, in: moc)!
-//        for heroes in heroes {
-//            let heroDAO = HeroDao(entity: entityHero, insertInto: moc)
-//            heroDAO.setValue(heroes.name, forKey: "name")
-//            heroDAO.setValue(heroes.id, forKey: "id")
-//            heroDAO.setValue(heroes.description, forKey: "heroDescription")
-//            heroDAO.setValue(heroes.photo, forKey: "photo")
-//            heroDAO.setValue(heroes.isFavorite, forKey: "favorite")
-//        }
-//        try? moc.save()
-//    }
-//
-    //    func deleteAllHeroes() {
-    //        let moc = CoreDataStack.shared.persistentContainer.viewContext
-    //        let fetchHeroes = NSFetchRequest<HeroDao>(entityName: HeroDao.entityName)
-    //        guard let moc,
-    //              let heroes = try? moc.fetch(fetchHeroes) else { return }
-    //
-    //        heroes.forEach { moc.delete($0) }
-    //        try? moc.save()
-    //    }
-    //}
-    
-    
+    func heroDetailViewModel(index: Int) -> HeroDetailViewControllerDelegate? {
+        guard let selectedHero = heroBy(index: index) else { return nil }
+        
+        return HeroDetailViewModel(
+            hero: selectedHero,
+            apiProvider: apiProvider,
+            secureDataProvider: secureDataProvider
+        )
+    }
 }
