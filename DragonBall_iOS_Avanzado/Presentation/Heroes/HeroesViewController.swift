@@ -36,6 +36,7 @@ class HeroesViewController: UIViewController {
     }
     //MARK: - Public Properties
     var viewModel: HeroesViewControllerDelegate?
+    var secureDataProvider = SecureDataProvider()
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -58,6 +59,8 @@ class HeroesViewController: UIViewController {
         }
         
         guard segue.identifier == "LOGOUT_TO_LOGIN",
+              //revisar esto
+              secureDataProvider.keychain.clear(),
               let logOut = segue.destination as? LoginViewController else {
             return
         }

@@ -11,10 +11,11 @@ import KeychainSwift
 protocol SecureDataProviderProtocol {
     func save(token: String)
     func getToken() -> String?
+    func deleteAllKeys()
 }
 
 final class SecureDataProvider: SecureDataProviderProtocol {
-    private let keychain = KeychainSwift()
+    let keychain = KeychainSwift()
     
     private enum Key {
         static let token = "KEY_KEYCHAIN_TOKEN"
@@ -22,10 +23,6 @@ final class SecureDataProvider: SecureDataProviderProtocol {
     
     func save(token: String) {
         keychain.set(token, forKey: Key.token)
-    }
-    
-    func deleteAllKeys() {
-        keychain.clear()
     }
     
     func getToken() -> String? {
