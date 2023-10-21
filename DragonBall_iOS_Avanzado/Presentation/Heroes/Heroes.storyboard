@@ -8,6 +8,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Login-->
+        <scene sceneID="QYT-lg-yYi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="waq-mE-c2x" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="3P2-N2-t7c"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VLm-WP-r1T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-625" y="-251"/>
+        </scene>
         <!--Heroes View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
@@ -29,6 +39,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="logOut:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="6dN-DG-ovO"/>
+                                    <segue destination="waq-mE-c2x" kind="show" identifier="LOGOUT_TO_LOGIN" id="CAP-YR-Zx4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DM7-bO-3jV">
@@ -37,6 +48,7 @@
                                 <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system" imagePlacement="trailing" title="Map"/>
                                 <connections>
                                     <action selector="toMap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="gLT-Em-VgI"/>
+                                    <segue destination="Zm1-h6-3fz" kind="show" identifier="HEROES_TO_HEROMAP" id="QSR-xB-1dW"/>
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="suc-eK-Li1">
@@ -82,6 +94,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="113.74045801526717" y="-2.1126760563380285"/>
+        </scene>
+        <!--HeroMap-->
+        <scene sceneID="ywg-nH-e3t">
+            <objects>
+                <viewControllerPlaceholder storyboardName="HeroMap" id="Zm1-h6-3fz" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="nlS-9Q-MFo"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mVV-vf-YxW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1011" y="-253"/>
         </scene>
         <!--HeroDetail-->
         <scene sceneID="0pc-br-esZ">

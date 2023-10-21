@@ -29,10 +29,10 @@ class HeroesViewController: UIViewController {
     @IBOutlet weak var loadingview: UIView!
     
     @IBAction func toMap(_ sender: Any) {
-        
+        performSegue(withIdentifier: "HEROES_TO_HEROMAP", sender: nil)
     }
     @IBAction func logOut(_ sender: Any) {
-        self.navigationController?.pushViewController(LoginViewController(), animated: true)
+        performSegue(withIdentifier: "LOGOUT_TO_LOGIN", sender: nil)
     }
     //MARK: - Public Properties
     var viewModel: HeroesViewControllerDelegate?
@@ -52,9 +52,19 @@ class HeroesViewController: UIViewController {
               let detailViewModel = viewModel?.heroDetailViewModel(index: index) else {
             return
         }
+        guard segue.identifier == "HEROES_TO_HEROMAP",
+              let heroMap = segue.destination as? HeroMap else {
+            return
+        }
+        
+        guard segue.identifier == "LOGOUT_TO_LOGIN",
+              let logOut = segue.destination as? LoginViewController else {
+            return
+        }
         
         heroDetailViewController.viewModel = detailViewModel
     }
+    
     //MARK: - Private functions
     private func initViews() {
         

@@ -10,6 +10,8 @@ import MapKit
 
 class HeroMap: UIViewController {
     
+    @IBOutlet weak var heroMap: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
