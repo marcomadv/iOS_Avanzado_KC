@@ -31,9 +31,6 @@ class LoginViewController: UIViewController {
     
     // MARK: - IBAction
     @IBAction func onLoginPressed() {
-        // TODO: Obtener el email y password introducidos por el usuario
-        // y enviarlos al servicio API de Login
-        
         viewModel?.onLoginPressed(
             email: emailField.text,
             password: passwordField.text

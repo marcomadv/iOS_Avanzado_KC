@@ -17,7 +17,7 @@ class LoginViewModel: LoginViewControllerDelegate {
     //MARK: - Properties
     var viewState: ((LoginViewState) -> Void)?
     var heroesViewModel: HeroesViewControllerDelegate {
-        HeroesViewModel(apiProvider: apiProvider, secureDataProvider: secureDataProvider)
+        HeroesViewModel(apiProvider: apiProvider, secureDataProvider: secureDataProvider, loggedSuccessful: true)
     }
     
     //MARK: - Init

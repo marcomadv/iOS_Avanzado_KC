@@ -10,6 +10,7 @@ import CoreData
 
 
 class HeroesViewModel: HeroesViewControllerDelegate {
+    
     //MARK: - Dependencies
     private let apiProvider: ApiProviderProtocol
     private let secureDataProvider: SecureDataProviderProtocol
@@ -20,34 +21,41 @@ class HeroesViewModel: HeroesViewControllerDelegate {
         heroes.count
     }
     
+    private var loggedSuccessful: Bool
     private var heroes: Heroes = []
     //MARK: - Initializers
-    init(apiProvider: ApiProviderProtocol, secureDataProvider: SecureDataProviderProtocol) {
+    init(apiProvider: ApiProviderProtocol, secureDataProvider: SecureDataProviderProtocol, loggedSuccessful: Bool) {
         self.apiProvider = apiProvider
         self.secureDataProvider = secureDataProvider
+        self.loggedSuccessful = loggedSuccessful
     }
     
     func onViewAppear() {
-        viewState?(.loading(true))
-        
-        DispatchQueue.global().async {
-            defer { self.viewState?(.loading(false)) }
-            guard let token = self.secureDataProvider.getToken() else { return }
-            
-            self.apiProvider.getHeroes(by: nil, token: token) { heroes in
-                self.heroes = heroes
-                self.viewState?(.updateData)
-                DispatchQueue.main.async {
-                    let coreDataprovider = CoreDataProvider()
-                    for hero in heroes {
-                        coreDataprovider.saveHero(heroes: [hero])
+        if(loggedSuccessful){
+            print("por aqui pasa 1")
+            viewState?(.loading(true))
+            DispatchQueue.global().async {
+                defer { self.viewState?(.loading(false)) }
+                guard let token = self.secureDataProvider.getToken() else { return }
+                
+                self.apiProvider.getHeroes(by: nil, token: token) { heroes in
+                    self.heroes = heroes
+                    self.viewState?(.updateData)
+                    DispatchQueue.main.async {
+                        let coreDataprovider = CoreDataProvider()
+                        for hero in heroes {
+                            coreDataprovider.saveHero(heroes: [hero])
+                            coreDataprovider.loadHeroes()
+                            print("por aqui pasa 2")
+                        }
                     }
                 }
-                
-//                self.saveHeroes()
-                
-                //self.deleteAllHeroes()
             }
+        } else {
+            print("por aqui pasa 3")
+            let coreDataprovider = CoreDataProvider()
+            coreDataprovider.loadHeroes()
+            self.viewState?(.updateData)
         }
     }
     
@@ -65,7 +73,7 @@ class HeroesViewModel: HeroesViewControllerDelegate {
         return HeroDetailViewModel(
             hero: selectedHero,
             apiProvider: apiProvider,
-            secureDataProvider: secureDataProvider
-        )
+            secureDataProvider: secureDataProvider)
     }
 }
+

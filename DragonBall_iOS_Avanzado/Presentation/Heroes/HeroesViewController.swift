@@ -28,7 +28,11 @@ class HeroesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loadingview: UIView!
     
+    @IBAction func toMap(_ sender: Any) {
+        
+    }
     @IBAction func logOut(_ sender: Any) {
+        self.navigationController?.pushViewController(LoginViewController(), animated: true)
     }
     //MARK: - Public Properties
     var viewModel: HeroesViewControllerDelegate?
@@ -46,8 +50,8 @@ class HeroesViewController: UIViewController {
               let index = sender as? Int,
               let heroDetailViewController = segue.destination as? HeroDetailViewController,
               let detailViewModel = viewModel?.heroDetailViewModel(index: index) else {
-                  return
-              }
+            return
+        }
         
         heroDetailViewController.viewModel = detailViewModel
     }

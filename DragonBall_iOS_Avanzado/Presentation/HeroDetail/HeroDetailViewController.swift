@@ -49,10 +49,10 @@ class HeroDetailViewController: UIViewController {
         viewModel?.viewState = { [weak self] state in
             DispatchQueue.main.async {
                 switch state {
-                    case .loading(let isLoading):
-                        break
+                case .loading(let isLoading):
+                    break
                     
-                    case .update(let hero, let locations):
+                case .update(let hero, let locations):
                     self?.updateViews(hero: hero, heroLocations: locations)
                 }
             }
