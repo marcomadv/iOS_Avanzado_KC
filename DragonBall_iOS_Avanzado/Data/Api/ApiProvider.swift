@@ -106,40 +106,45 @@ class ApiProvider: ApiProviderProtocol {
             completion?(heroes)
         }.resume()
     }
+    
     func getLocations(by heroId: String?, token: String, completion: ((HeroLocations) -> Void)?) {
         guard let url = URL(string: "\(ApiProvider.apiBaseURL)\(Endpoint.heroLocations)") else {
-            //TODO: Enviar notificacion indicando el error
+            // TODO: Enviar notificación indicando el error
             return
         }
+
         let jsonData: [String: Any] = ["id": heroId ?? ""]
         let jsonParameters = try? JSONSerialization.data(withJSONObject: jsonData)
-        
+
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
-        urlRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        
-        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        urlRequest.setValue("application/json; charset=utf-8",
+                            forHTTPHeaderField: "Content-Type")
+        urlRequest.setValue("Bearer \(token)",
+                            forHTTPHeaderField: "Authorization")
         urlRequest.httpBody = jsonParameters
-        
+
         URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             guard error == nil else {
-                //TODO: Enviar notificacion indicando el error
+                // TODO: Enviar notificación indicando el error
                 completion?([])
                 return
             }
-            
-            guard let data, (response as? HTTPURLResponse)?.statusCode == 200 else {
-                //TODO: Enviar notificacion indicando response error
+
+            guard let data,
+                  (response as? HTTPURLResponse)?.statusCode == 200 else {
+                // TODO: Enviar notificación indicando response error
                 completion?([])
                 return
             }
-            
+
             guard let heroLocations = try? JSONDecoder().decode(HeroLocations.self, from: data) else {
+                // TODO: Enviar notificación indicando response error
                 completion?([])
                 return
             }
-            
-//            print("API RESPONSE - GET HEROES: \(heroes)")
+
+            print("API RESPONSE - GET HERO LOCATIONS: \(heroLocations)")
             completion?(heroLocations)
         }.resume()
     }

@@ -42,7 +42,7 @@ class HeroDetailViewController: UIViewController {
     }
     
     private func initViews() {
-        mapView.delegate = self
+//        mapView.delegate = self
     }
     
     private func setObservers() {
@@ -85,9 +85,10 @@ class HeroDetailViewController: UIViewController {
     }
 }
 
-extension HeroDetailViewController: MKMapViewDelegate {
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        return nil
-    }
-}
+//extension HeroDetailViewController: MKMapViewDelegate {
+//
+//    // se puede usar para cambiar el pin de localizacion por uno personalizado
+//    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+//        guard let heroAnnotation = view.annotation as? HeroAnnotation else { return }
+//        coordinates.text = "Last coordinates: \(heroAnnotation.coordinate.latitude), \(heroAnnotation.coordinate.longitude)"
+//}

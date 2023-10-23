@@ -55,15 +55,15 @@ class HeroesViewController: UIViewController {
               let detailViewModel = viewModel?.heroDetailViewModel(index: index) else {
             return
         }
-        guard segue.identifier == "HEROES_TO_HEROMAP",
-              let heroMap = segue.destination as? HeroMap else {
-            return
-        }
-        
-        guard segue.identifier == "LOGOUT_TO_LOGIN",
-              let logOut = segue.destination as? LoginViewController else {
-            return
-        }
+//        guard segue.identifier == "HEROES_TO_HEROMAP",
+//              let heroMap = segue.destination as? HeroMap else {
+//            return
+//        }
+//
+//        guard segue.identifier == "LOGOUT_TO_LOGIN",
+//              let logOut = segue.destination as? LoginViewController else {
+//            return
+//        }
         
         heroDetailViewController.viewModel = detailViewModel
     }
@@ -83,6 +83,7 @@ class HeroesViewController: UIViewController {
                 switch state {
                 case .loading(let isLoading):
                     self?.loadingview.isHidden = !isLoading
+                    
                 case .updateData:
                     self?.tableView.reloadData()
                 }
