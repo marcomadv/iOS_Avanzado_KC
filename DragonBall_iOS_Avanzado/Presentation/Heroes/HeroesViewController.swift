@@ -29,10 +29,12 @@ class HeroesViewController: UIViewController {
     @IBOutlet weak var loadingview: UIView!
     
     @IBAction func toMap(_ sender: Any) {
-        performSegue(withIdentifier: "HEROES_TO_HEROMAP", sender: nil)
+       performSegue(withIdentifier: "HEROES_TO_HEROMAP", sender: nil)
     }
     @IBAction func logOut(_ sender: Any) {
-        performSegue(withIdentifier: "LOGOUT_TO_LOGIN", sender: nil)
+        secureDataProvider.keychain.clear()
+        //probando deprecated en storyboard
+        //navigationController?.popToRootViewController(animated: true)
     }
     //MARK: - Public Properties
     var viewModel: HeroesViewControllerDelegate?
@@ -59,8 +61,6 @@ class HeroesViewController: UIViewController {
         }
         
         guard segue.identifier == "LOGOUT_TO_LOGIN",
-              //revisar esto
-              secureDataProvider.keychain.clear(),
               let logOut = segue.destination as? LoginViewController else {
             return
         }

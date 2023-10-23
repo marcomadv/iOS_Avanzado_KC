@@ -8,15 +8,15 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login-->
-        <scene sceneID="QYT-lg-yYi">
+        <!--Splash-->
+        <scene sceneID="QHi-Ew-btf">
             <objects>
-                <viewControllerPlaceholder storyboardName="Login" id="waq-mE-c2x" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="3P2-N2-t7c"/>
+                <viewControllerPlaceholder storyboardName="Splash" id="j92-rt-Fs0" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="MF6-dE-QqO"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VLm-WP-r1T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JZu-Kf-EaH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-625" y="-251"/>
+            <point key="canvasLocation" x="-697" y="-255"/>
         </scene>
         <!--Heroes View Controller-->
         <scene sceneID="s0d-6b-0kx">
@@ -26,7 +26,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ka0-IG-u6t">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ka0-IG-u6t">
                                 <rect key="frame" x="0.0" y="99" width="393" height="719"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <sections/>
@@ -38,17 +38,16 @@
                                     <color key="baseForegroundColor" red="1" green="0.15900824820000001" blue="0.098287427930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="logOut:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="6dN-DG-ovO"/>
-                                    <segue destination="waq-mE-c2x" kind="show" identifier="LOGOUT_TO_LOGIN" id="CAP-YR-Zx4"/>
+                                    <action selector="logOut:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9SP-z7-Pnn"/>
+                                    <segue destination="j92-rt-Fs0" kind="push" id="6kh-eP-S8k"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DM7-bO-3jV">
-                                <rect key="frame" x="285" y="59" width="73" height="35"/>
+                                <rect key="frame" x="306.66666666666669" y="59" width="51.333333333333314" height="35"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system" imagePlacement="trailing" title="Map"/>
+                                <buttonConfiguration key="configuration" style="plain" image="map" catalog="system" imagePlacement="trailing"/>
                                 <connections>
-                                    <action selector="toMap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="gLT-Em-VgI"/>
-                                    <segue destination="Zm1-h6-3fz" kind="show" identifier="HEROES_TO_HEROMAP" id="QSR-xB-1dW"/>
+                                    <segue destination="Zm1-h6-3fz" kind="show" id="ZKA-XS-2Dq"/>
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="suc-eK-Li1">
@@ -117,7 +116,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="chevron.right" catalog="system" width="97" height="128"/>
+        <image name="map" catalog="system" width="128" height="112"/>
         <image name="power" catalog="system" width="127" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -11,10 +11,10 @@ import KeychainSwift
 protocol SecureDataProviderProtocol {
     func save(token: String)
     func getToken() -> String?
-    func deleteAllKeys()
 }
 
 final class SecureDataProvider: SecureDataProviderProtocol {
+    //la hago pública para poder acceder a la instancia de la libreria
     let keychain = KeychainSwift()
     
     private enum Key {
