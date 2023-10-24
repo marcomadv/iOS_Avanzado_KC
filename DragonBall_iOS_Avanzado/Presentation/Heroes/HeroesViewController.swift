@@ -48,6 +48,7 @@ class HeroesViewController: UIViewController {
         viewModel?.onViewAppear()
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "HEROES_TO_HERO_DETAIL",
               let index = sender as? Int,
