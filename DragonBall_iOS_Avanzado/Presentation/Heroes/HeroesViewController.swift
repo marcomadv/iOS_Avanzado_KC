@@ -50,23 +50,19 @@ class HeroesViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "HEROES_TO_HERO_DETAIL",
-              let index = sender as? Int,
-              let heroDetailViewController = segue.destination as? HeroDetailViewController,
-              let detailViewModel = viewModel?.heroDetailViewModel(index: index) else {
-            return
+        switch segue.identifier{
+        case "HEROES_TO_HERO_DETAIL" :
+            guard let index = sender as? Int else { return }
+            guard let heroDetailViewController = segue.destination as? HeroDetailViewController,
+                  let detailViewModel = viewModel?.heroDetailViewModel(index: index) else { return }
+            heroDetailViewController.viewModel = detailViewModel
+            
+        case "HEROES_TO_HEROMAP" :
+            guard let heroMap = segue.destination as? HeroMap else { return }
+            
+        default:
+            break
         }
-//        guard segue.identifier == "HEROES_TO_HEROMAP",
-//              let heroMap = segue.destination as? HeroMap else {
-//            return
-//        }
-//
-//        guard segue.identifier == "LOGOUT_TO_LOGIN",
-//              let logOut = segue.destination as? LoginViewController else {
-//            return
-//        }
-        
-        heroDetailViewController.viewModel = detailViewModel
     }
     
     //MARK: - Private functions
