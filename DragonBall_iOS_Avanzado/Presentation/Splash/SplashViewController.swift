@@ -14,6 +14,7 @@ protocol SplashViewControllerDelegate {
     
     func onViewAppear()
     func clearToken()
+    func deleteAllData()
 }
 
 enum SplashViewState {
@@ -27,6 +28,7 @@ class SplashViewController: UIViewController {
     
     @IBAction func myUnwindActionSplash(unwindSegue: UIStoryboardSegue) {
         viewModel?.clearToken()
+        viewModel?.deleteAllData()
     }
     
     var viewModel: SplashViewControllerDelegate?

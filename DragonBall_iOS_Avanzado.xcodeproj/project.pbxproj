@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A91557BD2AE7E9AF00F60ABE /* LocationDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91557BC2AE7E9AF00F60ABE /* LocationDAO.swift */; };
 		A9D480232ADFD60B003FA1CE /* HeroDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D480222ADFD60B003FA1CE /* HeroDAO.swift */; };
 		A9D480252ADFD8F1003FA1CE /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D480242ADFD8F1003FA1CE /* CoreDataStack.swift */; };
 		A9D480292ADFE31C003FA1CE /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D480282ADFE31C003FA1CE /* Hero.swift */; };
@@ -61,6 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A91557BC2AE7E9AF00F60ABE /* LocationDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDAO.swift; sourceTree = "<group>"; };
 		A9D480222ADFD60B003FA1CE /* HeroDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDAO.swift; sourceTree = "<group>"; };
 		A9D480242ADFD8F1003FA1CE /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		A9D480282ADFE31C003FA1CE /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				A9D480222ADFD60B003FA1CE /* HeroDAO.swift */,
+				A91557BC2AE7E9AF00F60ABE /* LocationDAO.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				A9D4803F2AE2CE50003FA1CE /* HeroDetailViewController.swift in Sources */,
 				A9D480232ADFD60B003FA1CE /* HeroDAO.swift in Sources */,
 				A9FC4A482AD6AE8600155F52 /* LoginViewModel.swift in Sources */,
+				A91557BD2AE7E9AF00F60ABE /* LocationDAO.swift in Sources */,
 				A9FC4A4D2AD9B33D00155F52 /* SecureDataProvider.swift in Sources */,
 				A9FC4A4F2AD9B76100155F52 /* ApiProvider.swift in Sources */,
 				A9D480292ADFE31C003FA1CE /* Hero.swift in Sources */,

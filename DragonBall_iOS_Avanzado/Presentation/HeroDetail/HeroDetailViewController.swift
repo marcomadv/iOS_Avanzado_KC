@@ -17,7 +17,7 @@ protocol HeroDetailViewControllerDelegate {
 
 enum HeroDetailViewState {
     case loading(_ isloading: Bool)
-    case update(hero: Hero?, locations: HeroLocations)
+    case update(hero: HeroDAO?, locations: HeroLocations)
     
 }
 
@@ -27,6 +27,7 @@ class HeroDetailViewController: UIViewController {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var heroeDescription: UITextView!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBAction func back(_ sender: Any) {
         navigationController?.popViewController(animated: true)
@@ -50,7 +51,7 @@ class HeroDetailViewController: UIViewController {
             DispatchQueue.main.async {
                 switch state {
                 case .loading(let isLoading):
-                    break
+                    self?.activityIndicator.isHidden = !isLoading
                     
                 case .update(let hero, let locations):
                     self?.updateViews(hero: hero, heroLocations: locations)
@@ -58,13 +59,13 @@ class HeroDetailViewController: UIViewController {
             }
         }
     }
-    private func updateViews(hero: Hero?, heroLocations: HeroLocations) {
+    private func updateViews(hero: HeroDAO?, heroLocations: HeroLocations?) {
         photo.kf.setImage(with: URL(string: hero?.photo ?? ""))
         makeRounded(image: photo)
         name.text = hero?.name
-        heroeDescription.text = hero?.description
+        heroeDescription.text = hero?.heroDescription
         
-        heroLocations.forEach {
+        heroLocations?.forEach {
             mapView.addAnnotation(
                 HeroAnnotation(
                     title: hero?.name,

@@ -12,7 +12,7 @@ protocol HeroesViewControllerDelegate {
     var viewState: ((HeroesViewState) -> Void)? { get set }
     var heroesCount: Int { get }
     func onViewAppear()
-    func heroBy(index: Int) -> Hero?
+    func heroBy(index: Int) -> HeroDAO?
     func heroDetailViewModel(index: Int) -> HeroDetailViewControllerDelegate?
 }
 
@@ -56,7 +56,7 @@ class HeroesViewController: UIViewController {
             heroDetailViewController.viewModel = detailViewModel
             
         case "HEROES_TO_HEROMAP" :
-            guard let heroMap = segue.destination as? HeroMap else { return }
+            guard segue.destination is HeroMap else { return }
             
         default:
             break
@@ -105,7 +105,7 @@ extension HeroesViewController: UITableViewDelegate, UITableViewDataSource {
             cell.updateView(
                 name: hero.name,
                 photo: hero.photo,
-                description: hero.description
+                description: hero.heroDescription
             )
         }
         

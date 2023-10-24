@@ -10,6 +10,7 @@ import Foundation
 class SplashViewModel: SplashViewControllerDelegate {
     private let apiProvider: ApiProviderProtocol
     private let secureDataProvider: SecureDataProviderProtocol
+    private let coreDataProvider = CoreDataProvider()
     
     var viewState: ((SplashViewState) -> Void)?
     
@@ -40,5 +41,9 @@ class SplashViewModel: SplashViewControllerDelegate {
     
     func clearToken() {
         secureDataProvider.clearToken()
+    }
+    
+    func deleteAllData() {
+        coreDataProvider.deleteAllHeroes()
     }
 }

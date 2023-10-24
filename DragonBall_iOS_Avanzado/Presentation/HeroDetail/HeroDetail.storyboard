@@ -66,6 +66,10 @@
                                     <segue destination="3tX-9O-gcf" kind="unwind" unwindAction="myUnwindActionHeroesWithUnwindSegue:" id="a6p-Y7-79i"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="MnU-PO-XlA">
+                                <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                                <color key="color" red="1" green="0.63967813330000001" blue="0.13847212380000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PgH-ME-Yd7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -75,9 +79,11 @@
                             <constraint firstItem="CRl-7k-Ave" firstAttribute="top" secondItem="kiV-Zk-quG" secondAttribute="top" id="8I0-1h-snP"/>
                             <constraint firstItem="XSh-HL-N1r" firstAttribute="top" secondItem="GRA-IX-5sc" secondAttribute="bottom" constant="20" id="B54-B8-arb"/>
                             <constraint firstItem="PgH-ME-Yd7" firstAttribute="trailing" secondItem="GRA-IX-5sc" secondAttribute="trailing" constant="16" id="BWS-H0-d8o"/>
+                            <constraint firstItem="MnU-PO-XlA" firstAttribute="centerY" secondItem="kiV-Zk-quG" secondAttribute="centerY" id="JXp-Wl-ZUH"/>
                             <constraint firstItem="CRl-7k-Ave" firstAttribute="trailing" secondItem="PgH-ME-Yd7" secondAttribute="trailing" id="OqE-d5-vFK"/>
                             <constraint firstItem="gDU-yP-y6t" firstAttribute="top" secondItem="kiV-Zk-quG" secondAttribute="top" constant="48" id="Pmz-OC-TGj"/>
                             <constraint firstItem="GRA-IX-5sc" firstAttribute="leading" secondItem="PgH-ME-Yd7" secondAttribute="leading" constant="16" id="Tt0-Dx-VXP"/>
+                            <constraint firstItem="MnU-PO-XlA" firstAttribute="centerX" secondItem="kiV-Zk-quG" secondAttribute="centerX" id="h0X-DN-Py1"/>
                             <constraint firstItem="gDU-yP-y6t" firstAttribute="leading" secondItem="PgH-ME-Yd7" secondAttribute="leading" constant="16" id="pNl-4f-sFY"/>
                             <constraint firstItem="PgH-ME-Yd7" firstAttribute="trailing" secondItem="YSJ-Ja-J4b" secondAttribute="trailing" constant="16" id="saD-56-8LV"/>
                             <constraint firstItem="XSh-HL-N1r" firstAttribute="bottom" secondItem="PgH-ME-Yd7" secondAttribute="bottom" constant="8" id="sqZ-r4-EK6"/>
@@ -87,6 +93,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="MnU-PO-XlA" id="BqL-Br-Bhj"/>
                         <outlet property="heroeDescription" destination="XSh-HL-N1r" id="4R7-q5-de7"/>
                         <outlet property="mapView" destination="CRl-7k-Ave" id="Ofa-wm-SaH"/>
                         <outlet property="name" destination="GRA-IX-5sc" id="bax-Fw-4d5"/>

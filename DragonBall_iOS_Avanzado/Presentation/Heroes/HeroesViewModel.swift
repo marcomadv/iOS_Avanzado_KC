@@ -14,6 +14,7 @@ class HeroesViewModel: HeroesViewControllerDelegate {
     //MARK: - Dependencies
     private let apiProvider: ApiProviderProtocol
     private let secureDataProvider: SecureDataProviderProtocol
+    private let coreDataprovider = CoreDataProvider()
     
     //MARK: - Properties
     var viewState: ((HeroesViewState) -> Void)?
@@ -22,7 +23,7 @@ class HeroesViewModel: HeroesViewControllerDelegate {
     }
     
     private var loggedSuccessful: Bool
-    private var heroes: Heroes = []
+    private var heroes: HeroesDAO = []
     //MARK: - Initializers
     init(apiProvider: ApiProviderProtocol, secureDataProvider: SecureDataProviderProtocol, loggedSuccessful: Bool) {
         self.apiProvider = apiProvider
@@ -31,35 +32,23 @@ class HeroesViewModel: HeroesViewControllerDelegate {
     }
     
     func onViewAppear() {
-        if(loggedSuccessful){
-            print("por aqui pasa 1")
-            viewState?(.loading(true))
-            DispatchQueue.global().async {
-                defer { self.viewState?(.loading(false)) }
-                guard let token = self.secureDataProvider.getToken() else { return }
-                
-                self.apiProvider.getHeroes(by: nil, token: token) { heroes in
-                    self.heroes = heroes
-                    self.viewState?(.updateData)
-                    DispatchQueue.main.async {
-                        let coreDataprovider = CoreDataProvider()
-                        for hero in heroes {
-                            coreDataprovider.saveHero(heroes: [hero])
-                            coreDataprovider.loadHeroes()
-                            print("por aqui pasa 2")
-                        }
-                    }
+        defer { self.viewState?(.loading(false)) }
+        self.heroes = coreDataprovider.loadHeroes()
+        if self.heroes.count == 0 {
+            guard let token = self.secureDataProvider.getToken() else { return }
+            self.apiProvider.getHeroes(by: nil, token: token) { [weak self] heroes in
+                DispatchQueue.main.async {
+                    self?.coreDataprovider.saveHero(heroes: heroes)
+                    self?.heroes = self?.coreDataprovider.loadHeroes() ?? []
+                    self?.viewState?(.updateData)
                 }
             }
         } else {
-            print("por aqui pasa 3")
-            let coreDataprovider = CoreDataProvider()
-            coreDataprovider.loadHeroes()
             self.viewState?(.updateData)
         }
     }
     
-    func heroBy(index: Int) -> Hero? {
+    func heroBy(index: Int) -> HeroDAO? {
         if index >= 0 && index < heroesCount {
             return heroes[index]
         } else {

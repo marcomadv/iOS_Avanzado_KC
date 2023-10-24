@@ -12,10 +12,10 @@ class HeroDetailViewModel: HeroDetailViewControllerDelegate {
     private let secureDataProvider: SecureDataProviderProtocol
     
     var viewState: ((HeroDetailViewState) -> Void)?
-    private var hero: Hero
+    private var hero: HeroDAO
     private var heroLocations: HeroLocations = []
     
-    init(hero: Hero, apiProvider: ApiProviderProtocol, secureDataProvider: SecureDataProviderProtocol) {
+    init(hero: HeroDAO, apiProvider: ApiProviderProtocol, secureDataProvider: SecureDataProviderProtocol) {
         self.hero = hero
         self.apiProvider = apiProvider
         self.secureDataProvider = secureDataProvider
@@ -23,18 +23,13 @@ class HeroDetailViewModel: HeroDetailViewControllerDelegate {
     }
     
     func onViewAppear() {
+        defer { self.viewState?(.loading(false)) }
         viewState?(.loading(true))
+        guard let token = self.secureDataProvider.getToken() else { return }
         
-        DispatchQueue.global().async {
-            defer { self.viewState?(.loading(false)) }
-            guard let token = self.secureDataProvider.getToken() else { return }
-            
-            self.apiProvider.getLocations(by: self.hero.id, token: token) { [weak self] heroLocations in
-                self?.heroLocations = heroLocations
-                self?.viewState?(.update(hero: self?.hero, locations: heroLocations))
-            }
+        self.apiProvider.getLocations(by: self.hero.id, token: token) { [weak self] locations in
+            self?.heroLocations = locations
+            self?.viewState?(.update(hero: self?.hero, locations: locations))
         }
     }
-    
-    
 }

@@ -10,7 +10,7 @@ import CoreData
 class CoreDataProvider {
     
     private var moc: NSManagedObjectContext? {
-        (UIApplication.shared.delegate as? CoreDataStack)?.persistentContainer.viewContext
+        CoreDataStack.shared.persistentContainer.viewContext
     }
     
     func saveHero(heroes: Heroes) {
@@ -23,16 +23,17 @@ class CoreDataProvider {
             heroDao.setValue(hero.description, forKeyPath: "heroDescription")
             heroDao.setValue(hero.photo, forKey: "photo")
             heroDao.setValue(hero.isFavorite, forKey: "favorite")
-            try? moc.save()
         }
+        
+        try? moc.save()
     }
     
-    func loadHeroes() {
+    func loadHeroes() -> HeroesDAO {
         let fetchHeroes = NSFetchRequest<HeroDAO>(entityName: HeroDAO.entityName)
         guard let moc,
-              let heroes = try? moc.fetch(fetchHeroes) else { return }
+              let heroes = try? moc.fetch(fetchHeroes) else { return [] }
         
-        print("Heroes: \(heroes)")
+        return heroes
     }
     
     func deleteAllHeroes() {
