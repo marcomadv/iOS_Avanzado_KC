@@ -44,7 +44,6 @@ class HeroesViewController: UIViewController {
         super.viewDidLoad()
         initViews()
         setObservers()
-        viewModel?.onViewAppear()
     }
     
     override func viewDidAppear(_ animated: Bool) {
