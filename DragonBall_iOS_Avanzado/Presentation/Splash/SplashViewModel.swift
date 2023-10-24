@@ -37,4 +37,8 @@ class SplashViewModel: SplashViewControllerDelegate {
             self.isLogged ? self.viewState?(.navigateToHeroes) : self.viewState?(.navigateToLogin)
         }
     }
+    
+    func clearToken() {
+        secureDataProvider.clearToken()
+    }
 }

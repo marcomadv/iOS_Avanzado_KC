@@ -13,6 +13,7 @@ protocol SplashViewControllerDelegate {
     var heroesViewModel: HeroesViewControllerDelegate { get }
     
     func onViewAppear()
+    func clearToken()
 }
 
 enum SplashViewState {
@@ -24,7 +25,9 @@ enum SplashViewState {
 class SplashViewController: UIViewController {
     @IBOutlet weak var loading: UIActivityIndicatorView!
     
-    @IBAction override func unwind(for unwindSegue: UIStoryboardSegue, towards subsequentVC: UIViewController) {}
+    @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
+        viewModel?.clearToken()
+    }
     
     var viewModel: SplashViewControllerDelegate?
     
