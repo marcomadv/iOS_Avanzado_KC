@@ -43,4 +43,36 @@ class CoreDataProvider {
         heroes.forEach { moc.delete($0) }
         try? moc.save()
     }
+    
+    func saveLocations(_ locations: [LocationDAO]) {
+        guard let moc,
+              let entityLocation = NSEntityDescription.entity(forEntityName: LocationDAO.entityName, in: moc) else { return }
+        for location in locations {
+            let locationDAO = LocationDAO(entity: entityLocation, insertInto: moc)
+            locationDAO.id = location.id
+            locationDAO.latitude = location.latitude
+            locationDAO.longitude = location.longitude
+            locationDAO.date = location.date
+            locationDAO.hero = location.hero
+        }
+        
+        try? moc.save()
+    }
+    
+    func loadLocations() -> [LocationDAO] {
+        let fetchLocations = NSFetchRequest<LocationDAO>(entityName: LocationDAO.entityName)
+        guard let moc,
+              let locations = try? moc.fetch(fetchLocations) else { return [] }
+        
+        return locations
+    }
+    
+    func deleteAllLocations() {
+        let fetchLocations = NSFetchRequest<LocationDAO>(entityName: LocationDAO.entityName)
+        guard let moc,
+              let locations = try? moc.fetch(fetchLocations) else { return }
+        locations.forEach { moc.delete($0) }
+        
+        try? moc.save()
+    }
 }
