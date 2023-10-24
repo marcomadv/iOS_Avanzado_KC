@@ -63,7 +63,7 @@
                                     <color key="baseForegroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="back:" destination="VLs-Ho-faC" eventType="touchUpInside" id="qex-Ir-ZtR"/>
+                                    <segue destination="3tX-9O-gcf" kind="unwind" unwindAction="myUnwindActionHeroesWithUnwindSegue:" id="a6p-Y7-79i"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -94,6 +94,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="01d-Iy-NKL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="3tX-9O-gcf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="138.1679389312977" y="-2.1126760563380285"/>
         </scene>

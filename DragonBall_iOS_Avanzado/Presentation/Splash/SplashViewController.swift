@@ -25,7 +25,7 @@ enum SplashViewState {
 class SplashViewController: UIViewController {
     @IBOutlet weak var loading: UIActivityIndicatorView!
     
-    @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
+    @IBAction func myUnwindActionSplash(unwindSegue: UIStoryboardSegue) {
         viewModel?.clearToken()
     }
     

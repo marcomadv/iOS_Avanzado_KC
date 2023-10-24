@@ -31,6 +31,9 @@ class HeroesViewController: UIViewController {
     @IBAction func toMap(_ sender: Any) {
        performSegue(withIdentifier: "HEROES_TO_HEROMAP", sender: nil)
     }
+    
+    @IBAction func myUnwindActionHeroes(unwindSegue: UIStoryboardSegue) {}
+    
     //MARK: - Public Properties
     var viewModel: HeroesViewControllerDelegate?
     var secureDataProvider = SecureDataProvider()

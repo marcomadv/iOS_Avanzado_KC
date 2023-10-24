@@ -9,10 +9,6 @@ import UIKit
 import MapKit
 
 class HeroMap: UIViewController {
-    
-    @IBAction func backToHeroes(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-    }
     @IBOutlet weak var heroMap: MKMapView!
     
     override func viewDidLoad() {

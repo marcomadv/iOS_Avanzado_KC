@@ -28,7 +28,7 @@
                                     <color key="baseForegroundColor" red="1" green="0.15900824820000001" blue="0.098287427930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="cet-9B-VkM" kind="unwind" unwindAction="myUnwindActionWithUnwindSegue:" id="4bw-rp-mQe"/>
+                                    <segue destination="cet-9B-VkM" kind="unwind" unwindAction="myUnwindActionSplashWithUnwindSegue:" id="FZk-y2-EXJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DM7-bO-3jV">
