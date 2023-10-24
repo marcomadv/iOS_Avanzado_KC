@@ -10,6 +10,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--HeroDetail-->
+        <scene sceneID="RLY-vl-iFG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="HeroDetail" id="hFT-1T-5WC" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="IcG-Kw-1mW"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CGb-Dg-JqG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-599" y="-203"/>
+        </scene>
         <!--Hero Map Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
@@ -50,6 +60,7 @@
                     </view>
                     <connections>
                         <outlet property="heroMap" destination="1ax-oC-FR2" id="n0o-hk-TOD"/>
+                        <segue destination="hFT-1T-5WC" kind="show" identifier="MAP_TO_DETAIL" id="l6E-hc-e9L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

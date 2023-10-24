@@ -15,6 +15,7 @@ protocol SplashViewControllerDelegate {
     func onViewAppear()
     func clearToken()
     func deleteAllData()
+
 }
 
 enum SplashViewState {

@@ -64,5 +64,10 @@ class HeroesViewModel: HeroesViewControllerDelegate {
             apiProvider: apiProvider,
             secureDataProvider: secureDataProvider)
     }
+    
+    func heroMapViewModel() -> HeroMapControllerDelegate? {
+        return HeroMapViewModel(apiProvider: apiProvider
+                                , secureDataProvider: secureDataProvider)
+    }
 }
 

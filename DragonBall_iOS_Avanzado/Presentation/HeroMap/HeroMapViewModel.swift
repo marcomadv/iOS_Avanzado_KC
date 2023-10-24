@@ -9,12 +9,29 @@ import Foundation
 import CoreData
 
 class HeroMapViewModel: HeroMapControllerDelegate {
-
+    private let apiProvider: ApiProviderProtocol
+    private let secureDataProvider: SecureDataProviderProtocol
     private let coreDataprovider = CoreDataProvider()
     
+    var viewState: ((HeroMapViewState) -> Void)?
     
+    init(apiProvider: ApiProviderProtocol, secureDataProvider: SecureDataProviderProtocol) {
+        self.apiProvider = apiProvider
+        self.secureDataProvider = secureDataProvider
+    }
     func onViewDidLoad() {
         let locations = coreDataprovider.loadLocations()
-        print("Locations \(locations)")
+        viewState?(.update(locations: locations))
+    }
+    
+    func heroById(_ id: String?) -> HeroDAO? {
+        coreDataprovider.getHerowith(id: id)
+    }
+    
+    func heroDetailViewModel(_ hero: HeroDAO ) -> HeroDetailViewControllerDelegate? {
+        return HeroDetailViewModel(
+            hero: hero,
+            apiProvider: apiProvider,
+            secureDataProvider: secureDataProvider)
     }
 }

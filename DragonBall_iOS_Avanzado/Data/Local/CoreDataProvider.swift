@@ -9,9 +9,11 @@ import CoreData
 
 class CoreDataProvider {
     
-    private var moc: NSManagedObjectContext? {
-        CoreDataStack.shared.persistentContainer.viewContext
-    }
+    private lazy var moc: NSManagedObjectContext? = {
+        let viewContext = CoreDataStack.shared.persistentContainer.viewContext
+        viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+        return viewContext
+    }()
     
     func saveHero(heroes: Heroes) {
         guard let moc,
@@ -41,10 +43,11 @@ class CoreDataProvider {
         guard let moc,
               let heroes = try? moc.fetch(fetchHeroes) else { return }
         heroes.forEach { moc.delete($0) }
-        try? moc.save()
+        
+        saveChanges()
     }
     
-    private func getHerowith(id: String?) -> HeroDAO? {
+     func getHerowith(id: String?) -> HeroDAO? {
         guard let idHero = id,
               let moc else { return nil }
         let fetchHeroe = HeroDAO.request
@@ -74,7 +77,7 @@ class CoreDataProvider {
                 locationDAO.hero = hero
             }
         }
-        try? moc.save()
+        saveChanges()
     }
     
     func loadLocations() -> [LocationDAO] {
@@ -85,11 +88,20 @@ class CoreDataProvider {
     }
     
     func deleteAllLocations() {
+        CoreDataStack.shared.saveContext()
         let fetchLocations = NSFetchRequest<LocationDAO>(entityName: LocationDAO.entityName)
         guard let moc,
               let locations = try? moc.fetch(fetchLocations) else { return }
         locations.forEach { moc.delete($0) }
+        saveChanges()
+    }
         
-        try? moc.save()
+        
+    private func saveChanges() {
+        do{
+            try moc?.save() }
+        catch {
+            debugPrint(error.localizedDescription)
+        }
     }
 }

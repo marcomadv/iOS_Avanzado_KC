@@ -14,6 +14,7 @@ protocol HeroesViewControllerDelegate {
     func onViewAppear()
     func heroBy(index: Int) -> HeroDAO?
     func heroDetailViewModel(index: Int) -> HeroDetailViewControllerDelegate?
+    func heroMapViewModel() -> HeroMapControllerDelegate?
 }
 
 //MARK: - View State
@@ -46,6 +47,11 @@ class HeroesViewController: UIViewController {
         viewModel?.onViewAppear()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel?.onViewAppear()
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier{
@@ -56,10 +62,9 @@ class HeroesViewController: UIViewController {
             heroDetailViewController.viewModel = detailViewModel
             
         case "HEROES_TO_HEROMAP" :
-            guard let heroMapController = segue.destination as? HeroMapController else { return }
-                let heroMapViewModel = HeroMapViewModel()
+            guard let heroMapController = segue.destination as? HeroMapController,
+                  let heroMapViewModel = viewModel?.heroMapViewModel() else { return }
                 heroMapController.viewModel = heroMapViewModel
-            
         default:
             break
         }

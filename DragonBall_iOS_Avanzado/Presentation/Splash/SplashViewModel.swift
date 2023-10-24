@@ -44,6 +44,7 @@ class SplashViewModel: SplashViewControllerDelegate {
     }
     
     func deleteAllData() {
+        coreDataProvider.deleteAllLocations()
         coreDataProvider.deleteAllHeroes()
     }
 }
