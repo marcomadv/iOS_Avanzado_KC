@@ -145,6 +145,7 @@ class ApiProvider: ApiProviderProtocol {
                 print(error)
                 completion?([])
             }
+            
         } .resume()
     }
 }

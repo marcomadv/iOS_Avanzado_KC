@@ -31,11 +31,6 @@ class HeroesViewController: UIViewController {
     @IBAction func toMap(_ sender: Any) {
        performSegue(withIdentifier: "HEROES_TO_HEROMAP", sender: nil)
     }
-    @IBAction func logOut(_ sender: Any) {
-        secureDataProvider.keychain.clear()
-        //probando deprecated en storyboard
-        //navigationController?.popToRootViewController(animated: true)
-    }
     //MARK: - Public Properties
     var viewModel: HeroesViewControllerDelegate?
     var secureDataProvider = SecureDataProvider()

@@ -15,7 +15,7 @@ protocol SecureDataProviderProtocol {
 
 final class SecureDataProvider: SecureDataProviderProtocol {
     //la hago pública para poder acceder a la instancia de la libreria
-    let keychain = KeychainSwift()
+    private let keychain = KeychainSwift()
     
     private enum Key {
         static let token = "KEY_KEYCHAIN_TOKEN"
@@ -27,5 +27,9 @@ final class SecureDataProvider: SecureDataProviderProtocol {
     
     func getToken() -> String? {
         keychain.get(Key.token)
+    }
+    
+    func clearToken() {
+        keychain.delete(Key.token)
     }
 }
