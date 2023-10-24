@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A91557BD2AE7E9AF00F60ABE /* LocationDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91557BC2AE7E9AF00F60ABE /* LocationDAO.swift */; };
+		A91557BF2AE7FC7C00F60ABE /* HeroMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91557BE2AE7FC7C00F60ABE /* HeroMapViewModel.swift */; };
 		A9D480232ADFD60B003FA1CE /* HeroDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D480222ADFD60B003FA1CE /* HeroDAO.swift */; };
 		A9D480252ADFD8F1003FA1CE /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D480242ADFD8F1003FA1CE /* CoreDataStack.swift */; };
 		A9D480292ADFE31C003FA1CE /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D480282ADFE31C003FA1CE /* Hero.swift */; };
@@ -23,7 +24,7 @@
 		A9D480462AE3CEC8003FA1CE /* HeroAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D480452AE3CEC8003FA1CE /* HeroAnnotation.swift */; };
 		A9D480482AE3D360003FA1CE /* HeroDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9D480472AE3D360003FA1CE /* HeroDetail.storyboard */; };
 		A9D4804B2AE42F97003FA1CE /* HeroMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9D4804A2AE42F97003FA1CE /* HeroMap.storyboard */; };
-		A9D4804D2AE42FAB003FA1CE /* HeroMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D4804C2AE42FAB003FA1CE /* HeroMap.swift */; };
+		A9D4804D2AE42FAB003FA1CE /* HeroMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D4804C2AE42FAB003FA1CE /* HeroMapController.swift */; };
 		A9E408A82AE3E59B003B1AAC /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E408A72AE3E59B003B1AAC /* CoreDataProvider.swift */; };
 		A9FC4A0E2AD696CF00155F52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC4A0D2AD696CF00155F52 /* AppDelegate.swift */; };
 		A9FC4A102AD696CF00155F52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC4A0F2AD696CF00155F52 /* SceneDelegate.swift */; };
@@ -63,6 +64,7 @@
 
 /* Begin PBXFileReference section */
 		A91557BC2AE7E9AF00F60ABE /* LocationDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDAO.swift; sourceTree = "<group>"; };
+		A91557BE2AE7FC7C00F60ABE /* HeroMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroMapViewModel.swift; sourceTree = "<group>"; };
 		A9D480222ADFD60B003FA1CE /* HeroDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDAO.swift; sourceTree = "<group>"; };
 		A9D480242ADFD8F1003FA1CE /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		A9D480282ADFE31C003FA1CE /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
@@ -77,7 +79,7 @@
 		A9D480452AE3CEC8003FA1CE /* HeroAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroAnnotation.swift; sourceTree = "<group>"; };
 		A9D480472AE3D360003FA1CE /* HeroDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HeroDetail.storyboard; sourceTree = "<group>"; };
 		A9D4804A2AE42F97003FA1CE /* HeroMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HeroMap.storyboard; sourceTree = "<group>"; };
-		A9D4804C2AE42FAB003FA1CE /* HeroMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroMap.swift; sourceTree = "<group>"; };
+		A9D4804C2AE42FAB003FA1CE /* HeroMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroMapController.swift; sourceTree = "<group>"; };
 		A9E408A72AE3E59B003B1AAC /* CoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProvider.swift; sourceTree = "<group>"; };
 		A9FC4A0A2AD696CF00155F52 /* DragonBall_iOS_Avanzado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragonBall_iOS_Avanzado.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FC4A0D2AD696CF00155F52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -187,7 +189,8 @@
 			isa = PBXGroup;
 			children = (
 				A9D4804A2AE42F97003FA1CE /* HeroMap.storyboard */,
-				A9D4804C2AE42FAB003FA1CE /* HeroMap.swift */,
+				A9D4804C2AE42FAB003FA1CE /* HeroMapController.swift */,
+				A91557BE2AE7FC7C00F60ABE /* HeroMapViewModel.swift */,
 			);
 			path = HeroMap;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A91557BF2AE7FC7C00F60ABE /* HeroMapViewModel.swift in Sources */,
 				A9D480372AE2738D003FA1CE /* SplashViewModel.swift in Sources */,
 				A9FC4A122AD696CF00155F52 /* LoginViewController.swift in Sources */,
 				A9D480432AE2E057003FA1CE /* HeroLocations.swift in Sources */,
@@ -484,7 +488,7 @@
 				A9D480252ADFD8F1003FA1CE /* CoreDataStack.swift in Sources */,
 				A9FC4A102AD696CF00155F52 /* SceneDelegate.swift in Sources */,
 				A9D480352AE2737F003FA1CE /* SplashViewController.swift in Sources */,
-				A9D4804D2AE42FAB003FA1CE /* HeroMap.swift in Sources */,
+				A9D4804D2AE42FAB003FA1CE /* HeroMapController.swift in Sources */,
 				A9FC4A972ADEAD4700155F52 /* HeroesViewModel.swift in Sources */,
 				A9D4802F2AE1325C003FA1CE /* HeroCellView.swift in Sources */,
 				A9D4803F2AE2CE50003FA1CE /* HeroDetailViewController.swift in Sources */,

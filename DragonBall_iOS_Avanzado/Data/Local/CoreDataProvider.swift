@@ -29,7 +29,7 @@ class CoreDataProvider {
     }
     
     func loadHeroes() -> HeroesDAO {
-        let fetchHeroes = NSFetchRequest<HeroDAO>(entityName: HeroDAO.entityName)
+        let fetchHeroes = HeroDAO.request
         guard let moc,
               let heroes = try? moc.fetch(fetchHeroes) else { return [] }
         
@@ -37,25 +37,43 @@ class CoreDataProvider {
     }
     
     func deleteAllHeroes() {
-        let fetchHeroes = NSFetchRequest<HeroDAO>(entityName: HeroDAO.entityName)
+        let fetchHeroes = HeroDAO.request
         guard let moc,
               let heroes = try? moc.fetch(fetchHeroes) else { return }
         heroes.forEach { moc.delete($0) }
         try? moc.save()
     }
     
-    func saveLocations(_ locations: [LocationDAO]) {
+    private func getHerowith(id: String?) -> HeroDAO? {
+        guard let idHero = id,
+              let moc else { return nil }
+        let fetchHeroe = HeroDAO.request
+        fetchHeroe.predicate = NSPredicate(format: "id = %@", idHero)
+        return try? moc.fetch(fetchHeroe).first
+    }
+    
+    private func getLocationWith(id: String?) -> LocationDAO? {
+        guard let idLocation = id,
+              let moc else { return nil }
+        let fetchHeroe = NSFetchRequest<LocationDAO>(entityName: LocationDAO.entityName)
+        fetchHeroe.predicate = NSPredicate(format: "id = %@", idLocation)
+        return try? moc.fetch(fetchHeroe).first
+    }
+    
+    func saveLocations(_ locations: HeroLocations) {
         guard let moc,
               let entityLocation = NSEntityDescription.entity(forEntityName: LocationDAO.entityName, in: moc) else { return }
         for location in locations {
-            let locationDAO = LocationDAO(entity: entityLocation, insertInto: moc)
-            locationDAO.id = location.id
-            locationDAO.latitude = location.latitude
-            locationDAO.longitude = location.longitude
-            locationDAO.date = location.date
-            locationDAO.hero = location.hero
+            if getLocationWith(id: location.id) == nil ,
+               let hero = getHerowith(id: location.hero?.id) {
+                let locationDAO = LocationDAO(entity: entityLocation, insertInto: moc)
+                locationDAO.id = location.id
+                locationDAO.latitude = location.latitude
+                locationDAO.longitude = location.longitude
+                locationDAO.date = location.date
+                locationDAO.hero = hero
+            }
         }
-        
         try? moc.save()
     }
     
@@ -63,7 +81,6 @@ class CoreDataProvider {
         let fetchLocations = NSFetchRequest<LocationDAO>(entityName: LocationDAO.entityName)
         guard let moc,
               let locations = try? moc.fetch(fetchLocations) else { return [] }
-        
         return locations
     }
     

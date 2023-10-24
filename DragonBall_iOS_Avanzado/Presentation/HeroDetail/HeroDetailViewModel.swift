@@ -11,6 +11,8 @@ class HeroDetailViewModel: HeroDetailViewControllerDelegate {
     private let apiProvider: ApiProviderProtocol
     private let secureDataProvider: SecureDataProviderProtocol
     
+    private let coreDataProvider = CoreDataProvider()
+    
     var viewState: ((HeroDetailViewState) -> Void)?
     private var hero: HeroDAO
     private var heroLocations: HeroLocations = []
@@ -30,6 +32,7 @@ class HeroDetailViewModel: HeroDetailViewControllerDelegate {
         self.apiProvider.getLocations(by: self.hero.id, token: token) { [weak self] locations in
             self?.heroLocations = locations
             self?.viewState?(.update(hero: self?.hero, locations: locations))
+            self?.coreDataProvider.saveLocations(locations)
         }
     }
 }

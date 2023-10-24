@@ -74,8 +74,6 @@ class SplashViewController: UIViewController {
                     self?.performSegue(withIdentifier: "SPLASH_TO_HEROES", sender: nil)
                 }
             }
-            
-            
         }
     }
 }

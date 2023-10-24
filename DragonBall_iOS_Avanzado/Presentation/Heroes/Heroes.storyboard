@@ -45,7 +45,7 @@
                                     </imageReference>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="Zm1-h6-3fz" kind="show" id="ZKA-XS-2Dq"/>
+                                    <segue destination="Zm1-h6-3fz" kind="show" identifier="HEROES_TO_HEROMAP" id="ZKA-XS-2Dq"/>
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="suc-eK-Li1">

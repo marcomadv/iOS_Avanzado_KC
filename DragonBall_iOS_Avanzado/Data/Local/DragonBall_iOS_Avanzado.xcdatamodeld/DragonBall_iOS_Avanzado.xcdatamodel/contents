@@ -6,13 +6,13 @@
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="photo" optional="YES" attributeType="String"/>
-        <relationship name="locations" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationDAO"/>
+        <relationship name="locations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LocationDAO" inverseName="hero" inverseEntity="LocationDAO"/>
     </entity>
     <entity name="LocationDAO" representedClassName="LocationDAO" syncable="YES">
         <attribute name="date" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="latitude" optional="YES" attributeType="String"/>
         <attribute name="longitude" optional="YES" attributeType="String"/>
-        <relationship name="heroe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationDAO" inverseName="heroe" inverseEntity="LocationDAO"/>
+        <relationship name="hero" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HeroDAO" inverseName="locations" inverseEntity="HeroDAO"/>
     </entity>
 </model>

@@ -8,10 +8,19 @@
 import UIKit
 import MapKit
 
-class HeroMap: UIViewController {
+protocol HeroMapControllerDelegate {
+    func onViewDidLoad()
+}
+
+class HeroMapController: UIViewController {
     @IBOutlet weak var heroMap: MKMapView!
+    
+    var viewModel: HeroMapControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel?.onViewDidLoad()
     }
+    
+    
 }

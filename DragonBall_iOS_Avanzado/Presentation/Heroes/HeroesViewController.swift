@@ -50,13 +50,15 @@ class HeroesViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier{
         case "HEROES_TO_HERO_DETAIL" :
-            guard let index = sender as? Int else { return }
-            guard let heroDetailViewController = segue.destination as? HeroDetailViewController,
+            guard let index = sender as? Int ,
+                  let heroDetailViewController = segue.destination as? HeroDetailViewController,
                   let detailViewModel = viewModel?.heroDetailViewModel(index: index) else { return }
             heroDetailViewController.viewModel = detailViewModel
             
         case "HEROES_TO_HEROMAP" :
-            guard segue.destination is HeroMap else { return }
+            guard let heroMapController = segue.destination as? HeroMapController else { return }
+                let heroMapViewModel = HeroMapViewModel()
+                heroMapController.viewModel = heroMapViewModel
             
         default:
             break
