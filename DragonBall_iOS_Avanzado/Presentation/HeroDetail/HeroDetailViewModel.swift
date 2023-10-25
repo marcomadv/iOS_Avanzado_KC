@@ -32,7 +32,9 @@ class HeroDetailViewModel: HeroDetailViewControllerDelegate {
         self.apiProvider.getLocations(by: self.hero.id, token: token) { [weak self] locations in
             self?.heroLocations = locations
             self?.viewState?(.update(hero: self?.hero, locations: locations))
-            self?.coreDataProvider.saveLocations(locations)
+            DispatchQueue.main.async {
+                self?.coreDataProvider.saveLocations(locations)
+            }
         }
     }
 }

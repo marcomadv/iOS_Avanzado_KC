@@ -15,6 +15,10 @@ class CoreDataProvider {
         return viewContext
     }()
     
+    var fetchHeroes: NSFetchRequest<HeroDAO> {
+        NSFetchRequest<HeroDAO>(entityName: HeroDAO.entityName)
+    }
+    
     func saveHero(heroes: Heroes) {
         guard let moc,
               let entityHero = NSEntityDescription.entity(forEntityName: HeroDAO.entityName, in: moc) else { return }
@@ -31,15 +35,12 @@ class CoreDataProvider {
     }
     
     func loadHeroes() -> HeroesDAO {
-        let fetchHeroes = HeroDAO.request
         guard let moc,
               let heroes = try? moc.fetch(fetchHeroes) else { return [] }
-        
         return heroes
     }
     
     func deleteAllHeroes() {
-        let fetchHeroes = HeroDAO.request
         guard let moc,
               let heroes = try? moc.fetch(fetchHeroes) else { return }
         heroes.forEach { moc.delete($0) }
@@ -50,9 +51,8 @@ class CoreDataProvider {
      func getHerowith(id: String?) -> HeroDAO? {
         guard let idHero = id,
               let moc else { return nil }
-        let fetchHeroe = HeroDAO.request
-        fetchHeroe.predicate = NSPredicate(format: "id = %@", idHero)
-        return try? moc.fetch(fetchHeroe).first
+         fetchHeroes.predicate = NSPredicate(format: "id = %@", idHero)
+        return try? moc.fetch(fetchHeroes).first
     }
     
     private func getLocationWith(id: String?) -> LocationDAO? {
