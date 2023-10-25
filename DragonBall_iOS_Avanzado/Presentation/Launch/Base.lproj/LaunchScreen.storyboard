@@ -16,22 +16,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_splash" translatesAutoresizingMaskIntoConstraints="NO" id="l4u-NS-Blw">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_login" translatesAutoresizingMaskIntoConstraints="NO" id="l4u-NS-Blw">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_name" translatesAutoresizingMaskIntoConstraints="NO" id="02K-jt-2mL">
+                                <rect key="frame" x="46" y="349" width="301" height="154"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="l4u-NS-Blw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Azs-iD-IEd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="02K-jt-2mL" secondAttribute="trailing" constant="46" id="Neh-ld-Rh4"/>
+                            <constraint firstItem="02K-jt-2mL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="46" id="PhQ-mW-B0q"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="02K-jt-2mL" secondAttribute="bottom" constant="315" id="b4P-mJ-3xZ"/>
+                            <constraint firstAttribute="bottom" secondItem="l4u-NS-Blw" secondAttribute="bottom" id="bLY-7a-ehm"/>
+                            <constraint firstItem="l4u-NS-Blw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="hn0-EP-agv"/>
+                            <constraint firstItem="02K-jt-2mL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="290" id="kUv-nH-7nX"/>
+                            <constraint firstItem="l4u-NS-Blw" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="oDz-hZ-d7F"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.671755725190835" y="374.64788732394368"/>
         </scene>
     </scenes>
     <resources>
-        <image name="img_splash" width="214" height="306"/>
+        <image name="img_login" width="375" height="667"/>
+        <image name="img_name" width="800" height="334"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

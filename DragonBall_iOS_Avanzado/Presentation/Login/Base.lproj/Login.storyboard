@@ -16,15 +16,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dragon Ball" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="luX-jV-FgF">
-                                <rect key="frame" x="16" y="109" width="361" height="69.666666666666686"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="HUC-hm-Prv"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="45"/>
-                                <color key="textColor" systemColor="systemOrangeColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_login" translatesAutoresizingMaskIntoConstraints="NO" id="Rps-qv-KKF">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="6HE-rO-T68">
                                 <rect key="frame" x="32" y="379.66666666666669" width="329" height="93"/>
                                 <subviews>
@@ -77,7 +72,7 @@
                                     <action selector="onLoginPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="2wZ-lG-ygA"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HoQ-8N-crY">
+                            <view hidden="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="HoQ-8N-crY">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="cbh-Pf-ZPD">
@@ -97,12 +92,9 @@
                         <constraints>
                             <constraint firstItem="HoQ-8N-crY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0ft-by-lkT"/>
                             <constraint firstAttribute="bottom" secondItem="HoQ-8N-crY" secondAttribute="bottom" id="2Zd-6d-EQh"/>
-                            <constraint firstItem="luX-jV-FgF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="7lI-Ol-g9U"/>
                             <constraint firstItem="6HE-rO-T68" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="96t-Bg-cWY"/>
-                            <constraint firstItem="luX-jV-FgF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="Bj3-fY-bSP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6HE-rO-T68" secondAttribute="trailing" constant="32" id="Hkw-3d-jOO"/>
                             <constraint firstItem="6HE-rO-T68" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="LId-Ex-wyE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="luX-jV-FgF" secondAttribute="trailing" constant="16" id="eqO-Rz-ZdM"/>
                             <constraint firstItem="HoQ-8N-crY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ggn-ej-jeb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hEk-F5-LUq" secondAttribute="bottom" constant="113" id="pEe-Hh-8sj"/>
                             <constraint firstItem="HoQ-8N-crY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="sXy-IH-FVq"/>
@@ -134,6 +126,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="img_login" width="375" height="667"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

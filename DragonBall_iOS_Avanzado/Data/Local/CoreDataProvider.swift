@@ -53,7 +53,7 @@ class CoreDataProvider {
               let moc else { return nil }
          let request = fetchHeroes
          request.predicate = NSPredicate(format: "id = %@", idHero)
-        return try? moc.fetch(fetchHeroes).first
+        return try? moc.fetch(request).first
     }
     
     private func getLocationWith(id: String?) -> LocationDAO? {

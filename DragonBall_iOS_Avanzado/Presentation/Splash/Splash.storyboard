@@ -16,22 +16,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_splash" translatesAutoresizingMaskIntoConstraints="NO" id="4d4-U7-zD9">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_login" translatesAutoresizingMaskIntoConstraints="NO" id="4d4-U7-zD9">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="QaB-u8-uLh">
                                 <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
                                 <color key="color" red="1" green="0.63967813330000001" blue="0.13847212380000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_name" translatesAutoresizingMaskIntoConstraints="NO" id="TBs-gz-Dho">
+                                <rect key="frame" x="46" y="349" width="301" height="154"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="4d4-U7-zD9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="0GT-IP-lDf"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="TBs-gz-Dho" secondAttribute="trailing" constant="46" id="C65-0X-5k9"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="TBs-gz-Dho" secondAttribute="bottom" constant="315" id="GOg-v5-eAD"/>
                             <constraint firstItem="4d4-U7-zD9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="I3e-CG-NiD"/>
                             <constraint firstAttribute="bottom" secondItem="4d4-U7-zD9" secondAttribute="bottom" id="NFc-Yf-ifv"/>
+                            <constraint firstItem="4d4-U7-zD9" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="QqN-yX-DjV"/>
                             <constraint firstItem="QaB-u8-uLh" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="UrK-Hw-SIw"/>
                             <constraint firstItem="QaB-u8-uLh" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="eZd-qo-lq9"/>
+                            <constraint firstItem="4d4-U7-zD9" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="fBM-nl-5WV"/>
+                            <constraint firstAttribute="bottom" secondItem="4d4-U7-zD9" secondAttribute="bottom" id="fmu-fT-mSm"/>
+                            <constraint firstItem="TBs-gz-Dho" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="290" id="hE0-Gh-8me"/>
                             <constraint firstItem="4d4-U7-zD9" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="n1w-Jz-wzr"/>
+                            <constraint firstItem="TBs-gz-Dho" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="46" id="tid-S5-Hs4"/>
                             <constraint firstItem="4d4-U7-zD9" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="xsy-Py-3a6"/>
                         </constraints>
                     </view>
@@ -67,7 +78,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="img_splash" width="214" height="306"/>
+        <image name="img_login" width="375" height="667"/>
+        <image name="img_name" width="800" height="334"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
