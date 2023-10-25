@@ -23,7 +23,7 @@
                                 <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
                                 <color key="color" red="1" green="0.63967813330000001" blue="0.13847212380000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_name" translatesAutoresizingMaskIntoConstraints="NO" id="TBs-gz-Dho">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_name" translatesAutoresizingMaskIntoConstraints="NO" id="TBs-gz-Dho">
                                 <rect key="frame" x="46" y="349" width="301" height="154"/>
                             </imageView>
                         </subviews>
