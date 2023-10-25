@@ -27,6 +27,9 @@ class HeroDetailViewController: UIViewController {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var heroeDescription: UITextView!
     
+    @IBAction func backToLastScreen(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBAction func back(_ sender: Any) {
