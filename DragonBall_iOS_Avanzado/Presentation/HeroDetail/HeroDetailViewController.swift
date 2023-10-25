@@ -75,6 +75,10 @@ class HeroDetailViewController: UIViewController {
                 )
             )
         }
+        
+        if let coordinate = mapView.annotations.first?.coordinate {
+            mapView.centerCoordinate = coordinate
+        }
     }
     
     private func makeRounded(image: UIImageView) {

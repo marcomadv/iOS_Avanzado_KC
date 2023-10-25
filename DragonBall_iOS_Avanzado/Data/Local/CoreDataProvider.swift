@@ -51,16 +51,17 @@ class CoreDataProvider {
      func getHerowith(id: String?) -> HeroDAO? {
         guard let idHero = id,
               let moc else { return nil }
-         fetchHeroes.predicate = NSPredicate(format: "id = %@", idHero)
+         let request = fetchHeroes
+         request.predicate = NSPredicate(format: "id = %@", idHero)
         return try? moc.fetch(fetchHeroes).first
     }
     
     private func getLocationWith(id: String?) -> LocationDAO? {
         guard let idLocation = id,
               let moc else { return nil }
-        let fetchHeroe = NSFetchRequest<LocationDAO>(entityName: LocationDAO.entityName)
-        fetchHeroe.predicate = NSPredicate(format: "id = %@", idLocation)
-        return try? moc.fetch(fetchHeroe).first
+        let fetchLocation = NSFetchRequest<LocationDAO>(entityName: LocationDAO.entityName)
+        fetchLocation.predicate = NSPredicate(format: "id = %@", idLocation)
+        return try? moc.fetch(fetchLocation).first
     }
     
     func saveLocations(_ locations: HeroLocations) {
