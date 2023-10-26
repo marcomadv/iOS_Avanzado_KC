@@ -21,24 +21,23 @@ class HeroDetailViewModel: HeroDetailViewControllerDelegate {
         self.hero = hero
         self.apiProvider = apiProvider
         self.secureDataProvider = secureDataProvider
-        
     }
     
     func onViewAppear() {
         defer { self.viewState?(.loading(false)) }
         viewState?(.loading(true))
-        self.heroLocations = coreDataProvider.loadLocations()
-        if self.heroLocations.count == 0 {
+        if self.hero.locations.count == 0 {
             guard let token = self.secureDataProvider.getToken() else { return }
             self.apiProvider.getLocations(by: self.hero.id, token: token) { [weak self] locations in
                 DispatchQueue.main.async {
                     self?.coreDataProvider.saveLocations(locations)
-                    self?.heroLocations = self?.coreDataProvider.loadLocations() ?? []
+                    self?.heroLocations = Array(self?.hero.locations ?? [])
                     self?.viewState?(.update(hero: self?.hero, locations: self?.heroLocations))
                 }
             }
         } else {
-            self.viewState?(.update(hero: self.hero, locations: heroLocations))
+            self.heroLocations = Array(self.hero.locations)
+            self.viewState?(.update(hero: self.hero, locations: self.heroLocations))
         }
     }
 }

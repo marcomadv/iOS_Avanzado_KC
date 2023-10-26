@@ -56,20 +56,11 @@ class CoreDataProvider {
         return try? moc.fetch(request).first
     }
     
-    private func getLocationWith(id: String?) -> LocationDAO? {
-        guard let idLocation = id,
-              let moc else { return nil }
-        let fetchLocation = NSFetchRequest<LocationDAO>(entityName: LocationDAO.entityName)
-        fetchLocation.predicate = NSPredicate(format: "id = %@", idLocation)
-        return try? moc.fetch(fetchLocation).first
-    }
-    
     func saveLocations(_ locations: HeroLocations) {
         guard let moc,
               let entityLocation = NSEntityDescription.entity(forEntityName: LocationDAO.entityName, in: moc) else { return }
         for location in locations {
-            if getLocationWith(id: location.id) == nil ,
-               let hero = getHerowith(id: location.hero?.id) {
+              if let hero = getHerowith(id: location.hero?.id) {
                 let locationDAO = LocationDAO(entity: entityLocation, insertInto: moc)
                 locationDAO.id = location.id
                 locationDAO.latitude = location.latitude
