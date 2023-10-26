@@ -15,7 +15,7 @@ class HeroDetailViewModel: HeroDetailViewControllerDelegate {
     
     var viewState: ((HeroDetailViewState) -> Void)?
     private var hero: HeroDAO
-    private var heroLocations: HeroLocations = []
+    private var heroLocations: [LocationDAO] = []
     
     init(hero: HeroDAO, apiProvider: ApiProviderProtocol, secureDataProvider: SecureDataProviderProtocol) {
         self.hero = hero
@@ -27,14 +27,19 @@ class HeroDetailViewModel: HeroDetailViewControllerDelegate {
     func onViewAppear() {
         defer { self.viewState?(.loading(false)) }
         viewState?(.loading(true))
-        guard let token = self.secureDataProvider.getToken() else { return }
-        
-        self.apiProvider.getLocations(by: self.hero.id, token: token) { [weak self] locations in
-            self?.heroLocations = locations
-            self?.viewState?(.update(hero: self?.hero, locations: locations))
-            DispatchQueue.main.async {
-                self?.coreDataProvider.saveLocations(locations)
+        self.heroLocations = coreDataProvider.loadLocations()
+        if self.heroLocations.count == 0 {
+            guard let token = self.secureDataProvider.getToken() else { return }
+            self.apiProvider.getLocations(by: self.hero.id, token: token) { [weak self] locations in
+                DispatchQueue.main.async {
+                    self?.coreDataProvider.saveLocations(locations)
+                    self?.heroLocations = self?.coreDataProvider.loadLocations() ?? []
+                    self?.viewState?(.update(hero: self?.hero, locations: self?.heroLocations))
+                }
             }
+        } else {
+            self.viewState?(.update(hero: self.hero, locations: heroLocations))
         }
     }
 }
+

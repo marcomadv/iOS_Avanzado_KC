@@ -17,7 +17,7 @@ protocol HeroDetailViewControllerDelegate {
 
 enum HeroDetailViewState {
     case loading(_ isloading: Bool)
-    case update(hero: HeroDAO?, locations: HeroLocations)
+    case update(hero: HeroDAO?, locations: [LocationDAO]?)
     
 }
 
@@ -62,7 +62,7 @@ class HeroDetailViewController: UIViewController {
             }
         }
     }
-    private func updateViews(hero: HeroDAO?, heroLocations: HeroLocations?) {
+    private func updateViews(hero: HeroDAO?, heroLocations: [LocationDAO]?) {
         photo.kf.setImage(with: URL(string: hero?.photo ?? ""))
         makeRounded(image: photo)
         name.text = hero?.name
