@@ -16,29 +16,23 @@ protocol HeroesViewControllerDelegate {
     func heroDetailViewModel(index: Int) -> HeroDetailViewControllerDelegate?
     func heroMapViewModel() -> HeroMapControllerDelegate?
 }
-
 //MARK: - View State
 enum HeroesViewState {
     case loading(_ isLoading: Bool)
     case updateData
 }
-
 //MARK: - Class
 class HeroesViewController: UIViewController {
     //MARK: - IBOutlet
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loadingview: UIView!
-    
     @IBAction func toMap(_ sender: Any) {
        performSegue(withIdentifier: "HEROES_TO_HEROMAP", sender: nil)
     }
-    
     @IBAction func myUnwindActionHeroes(unwindSegue: UIStoryboardSegue) {}
-    
     //MARK: - Public Properties
     var viewModel: HeroesViewControllerDelegate?
     var secureDataProvider = SecureDataProvider()
-    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +44,6 @@ class HeroesViewController: UIViewController {
         super.viewDidAppear(animated)
         viewModel?.onViewAppear()
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier{
@@ -68,7 +61,6 @@ class HeroesViewController: UIViewController {
             break
         }
     }
-    
     //MARK: - Private functions
     private func initViews() {
         

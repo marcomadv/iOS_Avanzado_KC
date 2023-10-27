@@ -30,7 +30,6 @@ class HeroMapController: UIViewController {
         initViews()
         setOservers()
         viewModel?.onViewDidLoad()
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
