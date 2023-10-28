@@ -75,6 +75,22 @@ class LoginViewModel: LoginViewControllerDelegate {
         viewState?(.navigateToNext)
     }
     
+    func addObserverErrors() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(apiErrorReceived(notification:)),
+                                               name: .apiProviderError,
+                                               object: nil)
+    }
+    
+    func removeObserverErrors() {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc private func apiErrorReceived(notification: Notification) {
+        guard let object = notification.object,
+              let error = object as? ApiProviderError else { return }
+        viewState?(.apiError(error.mesaggeError()))
+    }
     
     private func isValid(email: String?) -> Bool {
         email?.isEmpty == false && email?.contains("@") ?? false

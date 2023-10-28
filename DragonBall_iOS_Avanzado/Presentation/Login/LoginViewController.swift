@@ -12,6 +12,8 @@ protocol LoginViewControllerDelegate {
     var viewState: ((LoginViewState) -> Void)? {  get set }
     var heroesViewModel: HeroesViewControllerDelegate { get }
     func onLoginPressed(email: String?, password: String?)
+    func addObserverErrors()
+    func removeObserverErrors()
 }
 
 //MARK: - View State
@@ -20,6 +22,7 @@ enum LoginViewState {
     case showErrorEmail(_ error: String?)
     case showErrorPassword(_ error: String?)
     case navigateToNext
+    case apiError(_ error: String)
 }
 class LoginViewController: UIViewController {
     // MARK: - IBOutlet
@@ -48,6 +51,15 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         initViews()
         setObservers()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel?.addObserverErrors()
+ 
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel?.removeObserverErrors()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -97,6 +109,17 @@ class LoginViewController: UIViewController {
                     
                 case .navigateToNext:
                     self?.performSegue(withIdentifier: "LOGIN_TO_HERO ", sender: nil)
+                    
+                case .apiError(let error):
+                    DispatchQueue.main.async {
+                        self?.loadingview.isHidden = true
+                        let alert = UIAlertController(title: "Atención",
+                                                      message: error,
+                                                      preferredStyle: .alert)
+                        let alertAction = UIAlertAction.init(title: "Ok", style: .default)
+                        alert.addAction(alertAction)
+                        self?.present(alert, animated: true)
+                    }
                 }
             }
         }
