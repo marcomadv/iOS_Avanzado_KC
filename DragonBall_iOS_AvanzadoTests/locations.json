@@ -1,0 +1,20 @@
+[
+    {
+        "longitud": "-2.4746262",
+        "hero": {
+            "id": "14BB8E98-6586-4EA7-B4D7-35D6A63F5AA3"
+        },
+        "latitud": "36.8415268",
+        "dateShow": "2022-09-11T00:00:00Z",
+        "id": "AB3A873C-37B4-4FDE-A50F-8014D40D94FE"
+    },
+    {
+        "longitud": "-3.97",
+        "hero": {
+            "id": "14BB8E98-6586-4EA7-B4D7-35D6A63F5AA3"
+        },
+        "latitud": "40.43",
+        "dateShow": "2022-09-13T00:00:00Z",
+        "id": "E7D32AAB-8846-40DB-BF08-F4AA82B915C5"
+    }
+]
