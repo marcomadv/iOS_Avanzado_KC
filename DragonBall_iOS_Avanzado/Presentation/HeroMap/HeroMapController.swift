@@ -40,6 +40,7 @@ class HeroMapController: UIViewController {
             heroDetailViewController.viewModel = heroDetailViewModel
         }
     }
+    
     func initViews() {
         heroMap.delegate = self
     }
@@ -50,18 +51,16 @@ class HeroMapController: UIViewController {
             case .update(locations: let locations):
                 self?.updateViews(locations: locations)
             }
-            
         }
     }
     
     func updateViews(locations: [LocationDAO]) {
-        
         for loc in locations {
             let annotation = HeroAnnotation(
-                                title: loc.hero?.name,
-                                info: loc.hero?.id,
-                                coordinate: .init(latitude: Double(loc.latitude ?? "") ?? 0.0,
-                                                  longitude: Double(loc.longitude ?? "") ?? 0.0))
+                title: loc.hero?.name,
+                info: loc.hero?.id,
+                coordinate: .init(latitude: Double(loc.latitude ?? "") ?? 0.0,
+                                  longitude: Double(loc.longitude ?? "") ?? 0.0))
             heroMap.addAnnotation(annotation)
         }
     }

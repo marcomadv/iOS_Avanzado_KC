@@ -27,12 +27,10 @@ class HeroDetailViewController: UIViewController {
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var heroeDescription: UITextView!
-    
     @IBAction func backToLastScreen(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     @IBAction func back(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
@@ -41,7 +39,6 @@ class HeroDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initViews()
         setObservers()
         viewModel?.onViewAppear()
     }
@@ -49,10 +46,6 @@ class HeroDetailViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         viewModel?.onViewAppear()
-    }
-    
-    private func initViews() {
-//        mapView.delegate = self
     }
     
     private func setObservers() {
@@ -70,6 +63,7 @@ class HeroDetailViewController: UIViewController {
             }
         }
     }
+    
     private func updateViews(hero: HeroDAO?, heroLocations: [LocationDAO]?) {
         photo.kf.setImage(with: URL(string: hero?.photo ?? ""))
         makeRounded(image: photo)
@@ -100,11 +94,3 @@ class HeroDetailViewController: UIViewController {
         image.clipsToBounds = true
     }
 }
-
-//extension HeroDetailViewController: MKMapViewDelegate {
-//
-//    // se puede usar para cambiar el pin de localizacion por uno personalizado
-//    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-//        guard let heroAnnotation = view.annotation as? HeroAnnotation else { return }
-//        coordinates.text = "Last coordinates: \(heroAnnotation.coordinate.latitude), \(heroAnnotation.coordinate.longitude)"
-//}

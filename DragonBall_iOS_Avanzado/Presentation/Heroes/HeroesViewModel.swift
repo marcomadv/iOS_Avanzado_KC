@@ -24,6 +24,7 @@ class HeroesViewModel: HeroesViewControllerDelegate {
     
     private var loggedSuccessful: Bool
     private var heroes: HeroesDAO = []
+    
     //MARK: - Initializers
     init(apiProvider: ApiProviderProtocol, secureDataProvider: SecureDataProviderProtocol, loggedSuccessful: Bool) {
         self.apiProvider = apiProvider

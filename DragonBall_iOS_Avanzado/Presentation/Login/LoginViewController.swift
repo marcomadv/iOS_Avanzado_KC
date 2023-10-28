@@ -24,7 +24,9 @@ enum LoginViewState {
     case navigateToNext
     case apiError(_ error: String)
 }
+
 class LoginViewController: UIViewController {
+    
     // MARK: - IBOutlet
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -39,6 +41,7 @@ class LoginViewController: UIViewController {
             password: passwordField.text
         )
     }
+    
     //MARK: - Public properties
     var viewModel: LoginViewControllerDelegate?
     
@@ -46,6 +49,7 @@ class LoginViewController: UIViewController {
         case email = 0
         case password
     }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,9 +73,6 @@ class LoginViewController: UIViewController {
         }
         
         heroesViewController.viewModel = viewModel?.heroesViewModel
-        
-        // sin crear la variable en loginviewmodel, le asignamos el viewmodel a heroescontroller directamente
-        //heroesViewController.viewModel = HeroesViewModel(apiProvider: ApiProvider(), secureDataProvider: SecureDataProvider())
     }
     
     //MARK: - Private functions
@@ -135,9 +136,9 @@ extension LoginViewController: UITextFieldDelegate {
             
         case .password:
             passwordFieldError.isHidden = true
+            
         default:
             break
-            
         }
     }
 }

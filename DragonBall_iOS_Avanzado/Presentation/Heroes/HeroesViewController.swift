@@ -19,14 +19,17 @@ protocol HeroesViewControllerDelegate {
     func removeObserverErrors()
     func filterHeroesByName(name: String)
 }
+
 //MARK: - View State
 enum HeroesViewState {
     case loading(_ isLoading: Bool)
     case updateData
     case apiError(_ error: String)
 }
+
 //MARK: - Class
 class HeroesViewController: UIViewController {
+    
     //MARK: - IBOutlet
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loadingview: UIView!
@@ -36,10 +39,10 @@ class HeroesViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBAction func myUnwindActionHeroes(unwindSegue: UIStoryboardSegue) {}
     
-    
     //MARK: - Public Properties
     var viewModel: HeroesViewControllerDelegate?
     var secureDataProvider = SecureDataProvider()
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,9 +87,9 @@ class HeroesViewController: UIViewController {
             break
         }
     }
+    
     //MARK: - Private functions
     private func initViews() {
-        
         tableView.register(UINib(nibName: HeroCellView.identifier, bundle: nil),
                            forCellReuseIdentifier: HeroCellView.identifier)
         tableView.delegate = self

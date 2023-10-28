@@ -10,7 +10,6 @@ import Foundation
 class HeroDetailViewModel: HeroDetailViewControllerDelegate {
     private let apiProvider: ApiProviderProtocol
     private let secureDataProvider: SecureDataProviderProtocol
-    
     private let coreDataProvider = CoreDataProvider()
     
     var viewState: ((HeroDetailViewState) -> Void)?
