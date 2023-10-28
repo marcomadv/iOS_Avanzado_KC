@@ -8,4 +8,4 @@ App para la entrega final del módulo iOS Avanzado, para KeppCoding. Consumo de 
 	
 ## ScreenShots
 
-<img src="https://github.com/marcomadv/GithubImages/blob/main/dg1.png" width="150" /><img src="https://github.com/marcomadv/GithubImages/blob/main/dg2.png" width="150" /><img src="https://github.com/marcomadv/GithubImages/blob/main/dg3.png" width="150" /><img src="https://github.com/marcomadv/GithubImages/blob/main/dg4.png" width="150" /><img src="https://github.com/marcomadv/GithubImages/blob/main/dg5.png" width="150" /><img src="https://github.com/marcomadv/GithubImages/blob/main/dg6.png" width="150" />
+<img src="https://github.com/marcomadv/GithubImages/blob/main/dg1.png" width="150" /><img  src="https://github.com/marcomadv/GithubImages/blob/main/dg3.png" width="150" /><img src="https://github.com/marcomadv/GithubImages/blob/main/dg4.png" width="150" /><img src="https://github.com/marcomadv/GithubImages/blob/main/dg5.png" width="150" /><img src="https://github.com/marcomadv/GithubImages/blob/main/dg6.png" width="150" />
