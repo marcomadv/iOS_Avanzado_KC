@@ -7,6 +7,35 @@
 
 import Foundation
 
+enum ApiProviderError: Error {
+    case invalidCredentials
+    case serverError
+    case emptyData
+    case decodeFailure
+    case statusCode(code: Int)
+    case malformedUrl
+    
+    func mesaggeError() -> String {
+        switch self {
+        case .invalidCredentials:
+            return "Credenciales incorrectas, inténtelo de nuevo"
+        case .serverError:
+            return "ServerError"
+        case .emptyData:
+            return "No se pudieron cargar los datos"
+        case .decodeFailure:
+            return "La decodificación de los datos fue erronea"
+        case .statusCode(code: let code):
+            return "Se ha producido un error \(code)"
+        case .malformedUrl:
+            return "Url inválida"
+        }
+    }
+}
+
+extension Notification.Name {
+    static let apiProviderError = Notification.Name("NOTIFICATION_API_ERROR")
+}
 
 extension NotificationCenter {
     static let apiLoginNotification = Notification.Name("NOTIFICATION_API_LOGIN")
@@ -37,8 +66,7 @@ class ApiProvider: ApiProviderProtocol {
 
     //MARK: - ApiProviderProtocol
     func login(for user: String, with password: String) {
-        // la forma en la que vamos a hacer las consultas es para utilizar un ejemplo de notification center,
-        // en ningun caso se hace de esta forma ni es lo mas óptimo, lo lógico seria hacerlo con un completion: + closure
+        //Usamos notificación para devolver el token
         guard let url = URL(string: "\(ApiProvider.apiBaseURL)\(Endpoint.login)") else {
             return
         }
@@ -53,17 +81,23 @@ class ApiProvider: ApiProviderProtocol {
         
         session.dataTask(with: urlRequest) { (data, response, error) in
             guard error == nil else {
-                //TODO: Enviar notificacion indicando el error
+                NotificationCenter.default.post(name: .apiProviderError, object: ApiProviderError.serverError)
                 return
             }
             
             guard let data, (response as? HTTPURLResponse)?.statusCode == 200 else {
-                //TODO: Enviar notificacion indicando response error
+                var object = ApiProviderError.invalidCredentials
+                if let statuscode = (response as? HTTPURLResponse)?.statusCode {
+                    if statuscode != 401 {
+                        object = ApiProviderError.statusCode(code: statuscode)
+                    }
+                }
+                NotificationCenter.default.post(name: .apiProviderError, object: object)
                 return
             }
             
             guard let responseData = String(data: data, encoding: .utf8) else {
-                //TODO: Enviar notificacion indicando response vacio
+                NotificationCenter.default.post(name: .apiProviderError, object: ApiProviderError.emptyData)
                 return
             }
             
@@ -77,7 +111,7 @@ class ApiProvider: ApiProviderProtocol {
     
     func getHeroes(by name: String?, token: String, completion: ((Heroes) -> Void)?) {
         guard let url = URL(string: "\(ApiProvider.apiBaseURL)\(Endpoint.heroes)") else {
-            //TODO: Enviar notificacion indicando el error
+            NotificationCenter.default.post(name: .apiProviderError, object: ApiProviderError.malformedUrl)
             return
         }
         let jsonData: [String: Any] = ["name": name ?? ""]
@@ -92,30 +126,29 @@ class ApiProvider: ApiProviderProtocol {
         
         session.dataTask(with: urlRequest) { (data, response, error) in
             guard error == nil else {
-                //TODO: Enviar notificacion indicando el error
+                NotificationCenter.default.post(name: .apiProviderError, object: ApiProviderError.serverError)
                 completion?([])
                 return
             }
             
             guard let data, (response as? HTTPURLResponse)?.statusCode == 200 else {
-                //TODO: Enviar notificacion indicando response error
+                NotificationCenter.default.post(name: .apiProviderError, object: ApiProviderError.emptyData)
                 completion?([])
                 return
             }
-            
-            guard let heroes = try? JSONDecoder().decode(Heroes.self, from: data) else {
+            do{
+                let heroes = try JSONDecoder().decode(Heroes.self, from: data)
+                completion?(heroes)
+            } catch {
+                NotificationCenter.default.post(name: .apiProviderError, object: ApiProviderError.decodeFailure)
                 completion?([])
-                return
             }
-            
-            //            print("API RESPONSE - GET HEROES: \(heroes)")
-            completion?(heroes)
         }.resume()
     }
     
     func getLocations(by heroId: String?, token: String, completion: ((HeroLocations) -> Void)?) {
         guard let url = URL(string: "\(ApiProvider.apiBaseURL)\(Endpoint.heroLocations)") else {
-            // TODO: Enviar notificación indicando el error
+            NotificationCenter.default.post(name: .apiProviderError, object: ApiProviderError.malformedUrl)
             return
         }
         
@@ -132,14 +165,14 @@ class ApiProvider: ApiProviderProtocol {
         
         session.dataTask(with: urlRequest) { (data, response, error) in
             guard error == nil else {
-                // TODO: Enviar notificación indicando el error
+                NotificationCenter.default.post(name: .apiProviderError, object: ApiProviderError.serverError)
                 completion?([])
                 return
             }
             
             guard let data,
                   (response as? HTTPURLResponse)?.statusCode == 200 else {
-                // TODO: Enviar notificación indicando response error
+                NotificationCenter.default.post(name: .apiProviderError, object: ApiProviderError.emptyData)
                 completion?([])
                 return
             }
@@ -148,10 +181,9 @@ class ApiProvider: ApiProviderProtocol {
                 completion?(heroLocations)
                 
             } catch {
-                print(error)
+                NotificationCenter.default.post(name: .apiProviderError, object: ApiProviderError.decodeFailure)
                 completion?([])
             }
-            
         } .resume()
     }
 }
