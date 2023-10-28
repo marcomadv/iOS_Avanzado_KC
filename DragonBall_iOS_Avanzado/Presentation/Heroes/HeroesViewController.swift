@@ -57,7 +57,9 @@ class HeroesViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        viewModel?.onViewAppear()
+        if (searchBar.text?.count ?? 0) == 0 {
+            viewModel?.onViewAppear()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
