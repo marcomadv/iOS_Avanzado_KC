@@ -69,9 +69,6 @@ class LoginViewController: UIViewController {
         passwordField.delegate = self
         passwordField.tag = FieldType.password.rawValue
         
-        emailField.text = "imarcoma@gmail.com"
-        passwordField.text = "012345"
-        
         view.addGestureRecognizer(
             UITapGestureRecognizer(
                 target: self,
