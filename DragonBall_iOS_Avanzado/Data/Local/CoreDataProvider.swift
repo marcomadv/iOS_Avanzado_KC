@@ -42,6 +42,15 @@ class CoreDataProvider {
         return heroes
     }
     
+    func loadHeroesByName(name: String) -> HeroesDAO {
+        let request = fetchHeroes
+        request.sortDescriptors = [NSSortDescriptor.init(key: "id", ascending: true)]
+        request.predicate = NSPredicate(format: "name CONTAINS[cd] %@", name)
+        guard let moc,
+              let heroes = try? moc.fetch(request) else { return [] }
+        return heroes
+    }
+    
     func deleteAllHeroes() {
         guard let moc,
               let heroes = try? moc.fetch(fetchHeroes) else { return }
