@@ -65,7 +65,7 @@ final class ApiProviderTest: XCTestCase {
         
         MockURLProtocol.requestHandler = { request in
             XCTAssertEqual("POST", request.httpMethod)
-            var heroesUrl = self.url.appendingPathComponent("heros/all")
+            let heroesUrl = self.url.appendingPathComponent("heros/all")
             XCTAssertEqual(heroesUrl, request.url)
             XCTAssertEqual(
                 request.value(forHTTPHeaderField: "Authorization"),
@@ -88,6 +88,49 @@ final class ApiProviderTest: XCTestCase {
             XCTAssertEqual(heroes.first?.description, heroeExpected.description)
             XCTAssertEqual(heroes.first?.photo, heroeExpected.photo)
             XCTAssertEqual(heroes.first?.isFavorite, heroeExpected.isFavorite)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 1)
+    }
+    
+    func testGetLocations() {
+        let idHero = "14BB8E98-6586-4EA7-B4D7-35D6A63F5AA3"
+        let hero = Hero(id: "14BB8E98-6586-4EA7-B4D7-35D6A63F5AA3",
+                        name: nil,
+                        description: nil,
+                        photo: nil,
+                        isFavorite: false)
+        let numLocations = 2
+        let locationExpected = HeroLocation(id: "AB3A873C-37B4-4FDE-A50F-8014D40D94FE",
+                                             latitude: "36.8415268",
+                                             longitude: "-2.4746262",
+                                             date: "2022-09-11T00:00:00Z",
+                                             hero: hero)
+        
+        MockURLProtocol.requestHandler = { request in
+            XCTAssertEqual("POST", request.httpMethod)
+            let locationsUrl = self.url.appendingPathComponent("heros/locations")
+            XCTAssertEqual(locationsUrl, request.url)
+            XCTAssertEqual(
+                request.value(forHTTPHeaderField: "Authorization"),
+                "Bearer \(self.expectedToken)")
+            
+            let path = Bundle(for: type(of: self)).path(forResource: "locations", ofType: "json")
+            XCTAssertNotNil(path)
+            let url = URL.init(filePath: path!)
+            let data = try? Data.init(contentsOf: url)
+            XCTAssertNotNil(data)
+            let response = try XCTUnwrap( self.urlResponseTest())
+            return (response, data!)
+        }
+        let expectation = expectation(description: "Se han obtenido las localizaciones para el ID del heroe")
+        sut.getLocations(by: idHero, token: expectedToken) { locations in
+              XCTAssertEqual(locations.count, numLocations)
+            XCTAssertEqual(locations.first?.id, locationExpected.id)
+            XCTAssertEqual(locations.first?.latitude, locationExpected.latitude)
+            XCTAssertEqual(locations.first?.longitude, locationExpected.longitude)
+            XCTAssertEqual(locations.first?.date, locationExpected.date)
+            XCTAssertEqual(locations.first?.hero?.id, hero.id)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 1)

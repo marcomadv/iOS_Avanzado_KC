@@ -1,0 +1,46 @@
+{
+  "configurations" : [
+    {
+      "id" : "1C97F5F6-4FE8-40A9-AB70-89858179458B",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:DragonBall_iOS_Avanzado.xcodeproj",
+          "identifier" : "A9FC4A092AD696CF00155F52",
+          "name" : "DragonBall_iOS_Avanzado"
+        }
+      ]
+    },
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:DragonBall_iOS_Avanzado.xcodeproj",
+      "identifier" : "A9FC4A092AD696CF00155F52",
+      "name" : "DragonBall_iOS_Avanzado"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:DragonBall_iOS_Avanzado.xcodeproj",
+        "identifier" : "A9FC4A222AD696D000155F52",
+        "name" : "DragonBall_iOS_AvanzadoTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:DragonBall_iOS_Avanzado.xcodeproj",
+        "identifier" : "A9FC4A2C2AD696D000155F52",
+        "name" : "DragonBall_iOS_AvanzadoUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
