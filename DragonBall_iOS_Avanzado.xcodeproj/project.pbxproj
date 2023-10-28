@@ -12,6 +12,7 @@
 		A99B92AC2AED199D001CB01B /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99B92AB2AED199D001CB01B /* MockURLProtocol.swift */; };
 		A99B92AE2AED4092001CB01B /* heroes.json in Resources */ = {isa = PBXBuildFile; fileRef = A99B92AD2AED4092001CB01B /* heroes.json */; };
 		A99B92B02AED4741001CB01B /* locations.json in Resources */ = {isa = PBXBuildFile; fileRef = A99B92AF2AED4741001CB01B /* locations.json */; };
+		A99B92B32AED4CA0001CB01B /* SecureDataProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99B92B22AED4CA0001CB01B /* SecureDataProviderTest.swift */; };
 		A9D480232ADFD60B003FA1CE /* HeroDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D480222ADFD60B003FA1CE /* HeroDAO.swift */; };
 		A9D480252ADFD8F1003FA1CE /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D480242ADFD8F1003FA1CE /* CoreDataStack.swift */; };
 		A9D480292ADFE31C003FA1CE /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D480282ADFE31C003FA1CE /* Hero.swift */; };
@@ -72,6 +73,7 @@
 		A99B92AD2AED4092001CB01B /* heroes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = heroes.json; sourceTree = "<group>"; };
 		A99B92AF2AED4741001CB01B /* locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = locations.json; sourceTree = "<group>"; };
 		A99B92B12AED4BB4001CB01B /* DragonBall_iOS_Avanzado.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = DragonBall_iOS_Avanzado.xctestplan; sourceTree = "<group>"; };
+		A99B92B22AED4CA0001CB01B /* SecureDataProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureDataProviderTest.swift; sourceTree = "<group>"; };
 		A9D480222ADFD60B003FA1CE /* HeroDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDAO.swift; sourceTree = "<group>"; };
 		A9D480242ADFD8F1003FA1CE /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		A9D480282ADFE31C003FA1CE /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 			children = (
 				A99B92AD2AED4092001CB01B /* heroes.json */,
 				A99B92AF2AED4741001CB01B /* locations.json */,
+				A99B92B22AED4CA0001CB01B /* SecureDataProviderTest.swift */,
 				A9FC4A272AD696D000155F52 /* ApiProviderTest.swift */,
 				A99B92AB2AED199D001CB01B /* MockURLProtocol.swift */,
 			);
@@ -523,6 +526,7 @@
 			files = (
 				A9FC4A282AD696D000155F52 /* ApiProviderTest.swift in Sources */,
 				A99B92AC2AED199D001CB01B /* MockURLProtocol.swift in Sources */,
+				A99B92B32AED4CA0001CB01B /* SecureDataProviderTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
