@@ -15,11 +15,14 @@ protocol HeroesViewControllerDelegate {
     func heroBy(index: Int) -> HeroDAO?
     func heroDetailViewModel(index: Int) -> HeroDetailViewControllerDelegate?
     func heroMapViewModel() -> HeroMapControllerDelegate?
+    func addObserverErrors()
+    func removeObserverErrors()
 }
 //MARK: - View State
 enum HeroesViewState {
     case loading(_ isLoading: Bool)
     case updateData
+    case apiError(_ error: String)
 }
 //MARK: - Class
 class HeroesViewController: UIViewController {
@@ -40,9 +43,19 @@ class HeroesViewController: UIViewController {
         setObservers()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel?.addObserverErrors()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         viewModel?.onViewAppear()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel?.removeObserverErrors()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -79,6 +92,19 @@ class HeroesViewController: UIViewController {
                     
                 case .updateData:
                     self?.tableView.reloadData()
+                    
+                case .apiError(let error):
+                    DispatchQueue.main.async {
+                        self?.loadingview.isHidden = true
+                        let alert = UIAlertController(title: "Atención",
+                                                      message: error,
+                                                      preferredStyle: .alert)
+                        let alertAction = UIAlertAction.init(title: "Ok", style: .default) { _ in
+                            self?.viewModel?.onViewAppear()
+                        }
+                        alert.addAction(alertAction)
+                        self?.present(alert, animated: true)
+                    }
                 }
             }
         }

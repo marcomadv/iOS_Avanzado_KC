@@ -11,14 +11,15 @@ import Kingfisher
 
 protocol HeroDetailViewControllerDelegate {
     var viewState: ((HeroDetailViewState) -> Void)? { get set }
-    
     func onViewAppear ()
+    func addObserverErrors()
+    func removeObserverErrors()
 }
 
 enum HeroDetailViewState {
     case loading(_ isloading: Bool)
     case update(hero: HeroDAO?, locations: [LocationDAO]?)
-    
+    case apiError(_ error: String)
 }
 
 class HeroDetailViewController: UIViewController {
@@ -45,6 +46,11 @@ class HeroDetailViewController: UIViewController {
         viewModel?.onViewAppear()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel?.onViewAppear()
+    }
+    
     private func initViews() {
 //        mapView.delegate = self
     }
@@ -58,6 +64,8 @@ class HeroDetailViewController: UIViewController {
                     
                 case .update(let hero, let locations):
                     self?.updateViews(hero: hero, heroLocations: locations)
+                case .apiError(let error):
+                    debugPrint(error)
                 }
             }
         }

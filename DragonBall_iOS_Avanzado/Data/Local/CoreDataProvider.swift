@@ -35,8 +35,10 @@ class CoreDataProvider {
     }
     
     func loadHeroes() -> HeroesDAO {
+        let request = fetchHeroes
+        request.sortDescriptors = [NSSortDescriptor.init(key: "id", ascending: true)]
         guard let moc,
-              let heroes = try? moc.fetch(fetchHeroes) else { return [] }
+              let heroes = try? moc.fetch(request) else { return [] }
         return heroes
     }
     

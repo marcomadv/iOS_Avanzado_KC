@@ -50,6 +50,7 @@ class HeroMapController: UIViewController {
             case .update(locations: let locations):
                 self?.updateViews(locations: locations)
             }
+            
         }
     }
     
