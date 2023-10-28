@@ -48,6 +48,15 @@ class HeroesViewModel: HeroesViewControllerDelegate {
         }
     }
     
+    func filterHeroesByName(name: String) {
+        if name.count == 0 {
+            self.heroes = coreDataprovider.loadHeroes()
+        } else {
+            self.heroes = coreDataprovider.loadHeroesByName(name: name)
+        }
+        self.viewState?(.updateData)
+    }
+    
     func heroBy(index: Int) -> HeroDAO? {
         if index >= 0 && index < heroesCount {
             return heroes[index]

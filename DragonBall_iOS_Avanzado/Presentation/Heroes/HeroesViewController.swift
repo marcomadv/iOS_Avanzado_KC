@@ -17,6 +17,7 @@ protocol HeroesViewControllerDelegate {
     func heroMapViewModel() -> HeroMapControllerDelegate?
     func addObserverErrors()
     func removeObserverErrors()
+    func filterHeroesByName(name: String)
 }
 //MARK: - View State
 enum HeroesViewState {
@@ -30,9 +31,12 @@ class HeroesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loadingview: UIView!
     @IBAction func toMap(_ sender: Any) {
-       performSegue(withIdentifier: "HEROES_TO_HEROMAP", sender: nil)
+        performSegue(withIdentifier: "HEROES_TO_HEROMAP", sender: nil)
     }
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBAction func myUnwindActionHeroes(unwindSegue: UIStoryboardSegue) {}
+    
+    
     //MARK: - Public Properties
     var viewModel: HeroesViewControllerDelegate?
     var secureDataProvider = SecureDataProvider()
@@ -46,6 +50,9 @@ class HeroesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel?.addObserverErrors()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(showHideKeyboard(notification:)),
+                                               name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,6 +63,7 @@ class HeroesViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         viewModel?.removeObserverErrors()
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -69,7 +77,7 @@ class HeroesViewController: UIViewController {
         case "HEROES_TO_HEROMAP" :
             guard let heroMapController = segue.destination as? HeroMapController,
                   let heroMapViewModel = viewModel?.heroMapViewModel() else { return }
-                heroMapController.viewModel = heroMapViewModel
+            heroMapController.viewModel = heroMapViewModel
         default:
             break
         }
@@ -81,6 +89,8 @@ class HeroesViewController: UIViewController {
                            forCellReuseIdentifier: HeroCellView.identifier)
         tableView.delegate = self
         tableView.dataSource = self
+        
+        searchBar.delegate = self
     }
     
     private func setObservers() {
@@ -107,6 +117,16 @@ class HeroesViewController: UIViewController {
                     }
                 }
             }
+        }
+    }
+    
+    @objc func showHideKeyboard(notification: Notification) {
+        
+        if let userInfo = notification.userInfo,
+           let endRect = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+            
+            let keyboardOverlap = tableView.frame.maxY - endRect.origin.y
+            tableView.contentInset.bottom = keyboardOverlap
         }
     }
 }
@@ -138,5 +158,25 @@ extension HeroesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "HEROES_TO_HERO_DETAIL", sender: indexPath.row)
+    }
+}
+
+extension HeroesViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.count == 0 {
+            searchBar.showsCancelButton = false
+        } else if !searchBar.showsCancelButton {
+            searchBar.showsCancelButton = true
+        }
+        viewModel?.filterHeroesByName(name: searchText)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.showsCancelButton = false
     }
 }
