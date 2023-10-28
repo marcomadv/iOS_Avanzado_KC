@@ -28,7 +28,12 @@ class ApiProvider: ApiProviderProtocol {
         static let heroes = "/heros/all"
         static let heroLocations = "/heros/locations"
     }
+    let session: URLSession
     
+    init(session: URLSession = URLSession.shared) {
+        self.session = session
+    }
+
     //MARK: - ApiProviderProtocol
     func login(for user: String, with password: String) {
         // la forma en la que vamos a hacer las consultas es para utilizar un ejemplo de notification center,
@@ -45,7 +50,7 @@ class ApiProvider: ApiProviderProtocol {
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Basic \(loginData)", forHTTPHeaderField: "Authorization")
         
-        URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+        session.dataTask(with: urlRequest) { (data, response, error) in
             guard error == nil else {
                 //TODO: Enviar notificacion indicando el error
                 return
@@ -84,7 +89,7 @@ class ApiProvider: ApiProviderProtocol {
         urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         urlRequest.httpBody = jsonParameters
         
-        URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+        session.dataTask(with: urlRequest) { (data, response, error) in
             guard error == nil else {
                 //TODO: Enviar notificacion indicando el error
                 completion?([])
@@ -124,7 +129,7 @@ class ApiProvider: ApiProviderProtocol {
                             forHTTPHeaderField: "Authorization")
         urlRequest.httpBody = jsonParameters
         
-        URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+        session.dataTask(with: urlRequest) { (data, response, error) in
             guard error == nil else {
                 // TODO: Enviar notificación indicando el error
                 completion?([])
