@@ -28,7 +28,8 @@ class ApiProvider: ApiProviderProtocol {
         static let heroes = "/heros/all"
         static let heroLocations = "/heros/locations"
     }
-    let session: URLSession
+    
+    private let session: URLSession
     
     init(session: URLSession = URLSession.shared) {
         self.session = session
