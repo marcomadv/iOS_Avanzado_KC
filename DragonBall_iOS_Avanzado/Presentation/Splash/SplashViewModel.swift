@@ -7,7 +7,10 @@
 
 import Foundation
 
+//MARK: - Class
 class SplashViewModel: SplashViewControllerDelegate {
+    
+    //MARK: - Dependencies
     private let apiProvider: ApiProviderProtocol
     private let secureDataProvider: SecureDataProviderProtocol
     private let coreDataProvider = CoreDataProvider()
