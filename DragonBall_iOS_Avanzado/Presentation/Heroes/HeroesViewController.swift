@@ -43,7 +43,7 @@ class HeroesViewController: UIViewController {
     var viewModel: HeroesViewControllerDelegate?
     var secureDataProvider = SecureDataProvider()
     
-    //MARK: - Lifecycle
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initViews()

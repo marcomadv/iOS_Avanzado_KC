@@ -14,6 +14,7 @@ class SplashViewModel: SplashViewControllerDelegate {
     
     var viewState: ((SplashViewState) -> Void)?
     
+    //MARK: - Properties
     lazy var loginViewModel: LoginViewControllerDelegate = {
         LoginViewModel(apiProvider: apiProvider, secureDataProvider: secureDataProvider)
     }()
@@ -25,12 +26,13 @@ class SplashViewModel: SplashViewControllerDelegate {
     private var isLogged: Bool {
         secureDataProvider.getToken()?.isEmpty == false
     }
-    
+    //MARK: - Init
     init(apiProvider: ApiProviderProtocol, secureDataProvider: SecureDataProviderProtocol) {
         self.apiProvider = apiProvider
         self.secureDataProvider = secureDataProvider
     }
     
+    //MARK: - Functions
     func onViewAppear() {
         viewState?(.loading(true))
         

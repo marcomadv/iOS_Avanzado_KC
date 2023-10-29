@@ -86,6 +86,7 @@ class LoginViewModel: LoginViewControllerDelegate {
         NotificationCenter.default.removeObserver(self)
     }
     
+    //MARK: - Private functions
     @objc private func apiErrorReceived(notification: Notification) {
         guard let object = notification.object,
               let error = object as? ApiProviderError else { return }

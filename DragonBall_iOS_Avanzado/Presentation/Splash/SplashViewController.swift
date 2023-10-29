@@ -7,6 +7,7 @@
 
 import UIKit
 
+//MARK: - View Protocol
 protocol SplashViewControllerDelegate {
     var viewState: ((SplashViewState) -> Void)? { get set }
     var loginViewModel: LoginViewControllerDelegate { get }
@@ -16,7 +17,7 @@ protocol SplashViewControllerDelegate {
     func clearToken()
     func deleteAllData()
 }
-
+//MARK: - View State
 enum SplashViewState {
     case loading (_ isLoading: Bool)
     case navigateToLogin
@@ -24,8 +25,11 @@ enum SplashViewState {
 }
 
 class SplashViewController: UIViewController {
+    
+    // MARK: - IBOutlet
     @IBOutlet weak var loading: UIActivityIndicatorView!
     
+    // MARK: - IBAction
     @IBAction func myUnwindActionSplash(unwindSegue: UIStoryboardSegue) {
         viewModel?.clearToken()
         viewModel?.deleteAllData()
@@ -33,6 +37,7 @@ class SplashViewController: UIViewController {
     
     var viewModel: SplashViewControllerDelegate?
     
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setObservers()
@@ -60,6 +65,7 @@ class SplashViewController: UIViewController {
         }
     }
     
+    //MARK: - Private functions
     private func setObservers() {
         viewModel?.viewState = { [weak self] state in
             DispatchQueue.main.async {

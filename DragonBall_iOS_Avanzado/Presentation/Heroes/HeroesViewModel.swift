@@ -31,6 +31,7 @@ class HeroesViewModel: HeroesViewControllerDelegate {
         self.secureDataProvider = secureDataProvider
         self.loggedSuccessful = loggedSuccessful
     }
+    //MARK: - LifeCycle
     
     func onViewAppear() {
         defer { self.viewState?(.loading(false)) }
@@ -49,6 +50,7 @@ class HeroesViewModel: HeroesViewControllerDelegate {
         }
     }
     
+    //MARK: - Functions
     func filterHeroesByName(name: String) {
         if name.count == 0 {
             self.heroes = coreDataprovider.loadHeroes()

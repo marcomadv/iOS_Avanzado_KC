@@ -9,6 +9,7 @@ import UIKit
 import MapKit
 import Kingfisher
 
+//MARK: - Protocol
 protocol HeroDetailViewControllerDelegate {
     var viewState: ((HeroDetailViewState) -> Void)? { get set }
     func onViewAppear ()
@@ -23,6 +24,8 @@ enum HeroDetailViewState {
 }
 
 class HeroDetailViewController: UIViewController {
+    
+    //MARK: - IBOutlet
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var name: UILabel!
@@ -31,12 +34,15 @@ class HeroDetailViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    //MARK: - IBAction
     @IBAction func back(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
     
     var viewModel: HeroDetailViewControllerDelegate?
     
+    //MARK: - Lyfe Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setObservers()
@@ -48,6 +54,7 @@ class HeroDetailViewController: UIViewController {
         viewModel?.onViewAppear()
     }
     
+    //MARK: - Private Functions
     private func setObservers() {
         viewModel?.viewState = { [weak self] state in
             DispatchQueue.main.async {

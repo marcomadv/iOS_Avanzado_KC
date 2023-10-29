@@ -8,12 +8,13 @@
 import UIKit
 import MapKit
 
+//MARK: - View State
 enum HeroMapViewState {
     case update(locations: [LocationDAO])
 }
 
+//MARK: - Protocol
 protocol HeroMapControllerDelegate {
-    
     var viewState: ((HeroMapViewState) -> Void)? { get set }
     func onViewDidLoad()
     func heroById(_ id: String?) -> HeroDAO?
@@ -21,10 +22,13 @@ protocol HeroMapControllerDelegate {
 }
 
 class HeroMapController: UIViewController {
+    
+    //MARK: - IBOutlet
     @IBOutlet weak var heroMap: MKMapView!
     
     var viewModel: HeroMapControllerDelegate?
     
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initViews()
@@ -32,6 +36,7 @@ class HeroMapController: UIViewController {
         viewModel?.onViewDidLoad()
     }
     
+    //MARK: - Functions
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MAP_TO_DETAIL" {
             guard let hero = sender as? HeroDAO,
@@ -66,6 +71,7 @@ class HeroMapController: UIViewController {
     }
 }
 
+//MARK: - Extension
 extension HeroMapController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
         guard let idHero = ( annotation as? HeroAnnotation)?.info as? String?,

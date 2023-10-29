@@ -50,17 +50,19 @@ class LoginViewController: UIViewController {
         case password
     }
     
-    //MARK: - Lifecycle
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initViews()
         setObservers()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel?.addObserverErrors()
  
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         viewModel?.removeObserverErrors()

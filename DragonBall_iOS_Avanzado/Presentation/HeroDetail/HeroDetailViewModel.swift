@@ -8,20 +8,25 @@
 import Foundation
 
 class HeroDetailViewModel: HeroDetailViewControllerDelegate {
+    
+    //MARK: - Dependencies
     private let apiProvider: ApiProviderProtocol
     private let secureDataProvider: SecureDataProviderProtocol
     private let coreDataProvider = CoreDataProvider()
     
+    //MARK: - Properties
     var viewState: ((HeroDetailViewState) -> Void)?
     private var hero: HeroDAO
     private var heroLocations: [LocationDAO] = []
     
+    //MARK: - Init
     init(hero: HeroDAO, apiProvider: ApiProviderProtocol, secureDataProvider: SecureDataProviderProtocol) {
         self.hero = hero
         self.apiProvider = apiProvider
         self.secureDataProvider = secureDataProvider
     }
     
+    //MARK: - Life Cycle
     func onViewAppear() {
         defer { self.viewState?(.loading(false)) }
         viewState?(.loading(true))
@@ -40,6 +45,7 @@ class HeroDetailViewModel: HeroDetailViewControllerDelegate {
         }
     }
     
+    //MARK: - Functions
     func addObserverErrors() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(apiErrorReceived(notification:)),
