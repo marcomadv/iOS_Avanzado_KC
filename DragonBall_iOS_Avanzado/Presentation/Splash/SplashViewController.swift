@@ -23,7 +23,7 @@ enum SplashViewState {
     case navigateToLogin
     case navigateToHeroes
 }
-
+//MARK: - Class
 class SplashViewController: UIViewController {
     
     // MARK: - IBOutlet
