@@ -7,6 +7,7 @@
 
 import Foundation
 
+//MARK: - Class
 class HeroDetailViewModel: HeroDetailViewControllerDelegate {
     
     //MARK: - Dependencies

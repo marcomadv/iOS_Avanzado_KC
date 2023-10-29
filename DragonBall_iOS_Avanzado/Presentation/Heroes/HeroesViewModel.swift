@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-
+//MARK: - Class
 class HeroesViewModel: HeroesViewControllerDelegate {
     
     //MARK: - Dependencies

@@ -16,13 +16,14 @@ protocol HeroDetailViewControllerDelegate {
     func addObserverErrors()
     func removeObserverErrors()
 }
-
+//MARK: - View State
 enum HeroDetailViewState {
     case loading(_ isloading: Bool)
     case update(hero: HeroDAO?, locations: [LocationDAO]?)
     case apiError(_ error: String)
 }
 
+//MARK: - Class
 class HeroDetailViewController: UIViewController {
     
     //MARK: - IBOutlet

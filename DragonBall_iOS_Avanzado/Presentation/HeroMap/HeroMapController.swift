@@ -21,6 +21,7 @@ protocol HeroMapControllerDelegate {
     func heroDetailViewModel(_ hero: HeroDAO ) -> HeroDetailViewControllerDelegate?
 }
 
+//MARK: - Class
 class HeroMapController: UIViewController {
     
     //MARK: - IBOutlet
