@@ -11,7 +11,9 @@
   
 - *Manejo de librerias externas como KingFisher*
 
-¡Atención!, Las localizaciones de los heroes se añaden a medida que se van abriendo detalles, para no romper el flujo de la App.
+##¡Atención!
+
+Las localizaciones de los heroes se añaden a medida que se van abriendo detalles, para no romper el flujo de la App y hacer llamadas en exceso a la Api.
 
 ## ScreenShots
 
