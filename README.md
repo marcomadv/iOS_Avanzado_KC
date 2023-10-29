@@ -1,12 +1,15 @@
 # DragonBall iOS Avanzado
 
-App para la entrega final del módulo iOS Avanzado, para KeppCoding. Consumo de API creada por KeepCoding para el Bootcamp Mobile XVI
+### App para la entrega final del módulo iOS Avanzado, para KeppCoding. Consumo de API creada por KeepCoding para el Bootcamp Mobile XVI
 
 
-```Se aplica el patron de diseño MVVM```
-```CoreData```
-```Keychain```
-```Manejo de librerias externas como KingFisher```
+- *Se aplica el patron de diseño MVVM*
+
+- *CoreData*
+  
+- *Keychain*
+  
+- *Manejo de librerias externas como KingFisher*
 
 
 ## ScreenShots
